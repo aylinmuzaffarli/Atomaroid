@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подготовка к олимпиадам по физике</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
+        }
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .main-banner {
+            text-align: center;
+            padding: 80px 40px;
+            background: #ffffff;
+            margin: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .main-banner h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 700;
+            color: #202124;
+        }
+        .main-banner p {
+            margin: 20px 0;
+            color: #5f6368;
+            font-size: 1.3em;
+        }
+        .main-banner button {
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            color: #ffffff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .main-banner button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .popular-tasks-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e8f0fe);
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .popular-tasks-section h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .popular-tasks {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .task-card {
+            background: #ffffff;
+            width: 320px;
+            padding: 25px;
+            margin: 15px;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .task-card h3 {
+            font-size: 1.7em;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #202124;
+        }
+        .task-card a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+        .task-card a:hover {
+            color: #ea4335;
+        }
+        .competitions-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .competitions-section h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .competitions-card {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .competitions-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .competitions-card p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .contact-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .contact-card {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .contact-card p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .contact-card a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .contact-card a:hover {
+            color: #ea4335;
+        }
+        .contact-card .contact-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            color: #ffffff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-card .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .main-banner h1 {
+                font-size: 2.2em;
+            }
+            .task-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            .contact-section h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <a href="index.html#competitions" class="nav-link">Соревнования</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+    <div id="home" class="main-banner">
+        <h1>Подготовка к олимпиадам по физике</h1>
+        <p>Решайте задачи, изучайте решения и готовьтесь к победам!</p>
+        <button onclick="document.querySelector('.popular-tasks-section').scrollIntoView({behavior: 'smooth'})">Начать решать</button>
+    </div>
+    <div class="popular-tasks-section">
+        <h2>Популярные задачи</h2>
+       <div class="popular-tasks">
+    <div class="task-card">
+        <h3>Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 4</h3>
+        <a href="task-details2.html?id=rpc2025-7-4" target="_blank">Посмотреть на задачу</a>
+    </div>
+    <div class="task-card">
+        <h3>Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 5</h3>
+        <a href="task-details2.html?id=rfo2025-10-5" target="_blank">Посмотреть на задачу</a>
+    </div>
+    <div class="task-card">
+        <h3>Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 23</h3>
+        <a href="task-details2.html?id=rfo2025-89-23" target="_blank">Посмотреть на задачу</a>
+    </div>
+</div>
+    </div>
+    <div id="competitions" class="competitions-section">
+        <h2>Соревнования</h2>
+        <div class="competitions-card">
+            <p>Информация о предстоящих соревнованиях и олимпиадах по физике скоро появится!</p>
+        </div>
+    </div>
+    <div id="contact" class="contact-section">
+        <h2>Контакты</h2>
+        <div class="contact-card">
+            <p>Свяжитесь со мной для вопросов, предложений или сотрудничества по олимпиадной физике!</p>
+            <p>Заполните форму обратной связи:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHRFhiI5RbHw88rjaHrOED3wyP0zw9pgYY1WZysTcwCk1bEw/viewform?usp=header" target="_blank" class="contact-button">Открыть форму</a>
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
+
+            // Remove active class from all links
+            link.classList.remove('active');
+
+            // Highlight based on page
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    // For index.html, highlight based on hash
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    // For other pages (e.g., info.html, tasks.html), highlight based on path
+                    link.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

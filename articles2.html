@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Я думала, что решаю задачи. Оказалось — они решают меня.</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
+        }
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .article-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .article-container h1 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .article-content {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .article-content p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            color: #ffffff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .article-container h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <a href="articles.html" class="nav-link active">Статьи</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+    <div class="article-container">
+        <h1>Я думала, что решаю задачи. Оказалось — они решают меня.</h1>
+        <div class="article-content">
+            <p>Мой путь начался с информатики. Меня привлекала её точность, логичность и чёткие критерии успеха: задача либо решена, либо нет. Мир алгоритмов и структур данных казался замкнутым, чистым, поддающимся контролю — и в этом было особое ощущение власти над хаосом. Я решала тысячи задач, участвовала в олимпиадах, следила за рейтингами, оттачивала навык писать эффективно и быстро. Тогда мне казалось: чем больше, тем лучше.</p>
+            <p>Но с течением времени внутри накапливался вопрос, который нельзя было закрыть очередным accepted. Я всё чаще ловила себя на чувстве, что бегу по замкнутому кругу: сложность растёт, но не глубина. Алгоритм может быть оптимален — но не всегда понятен. <strong>Почему вообще работает что-либо?</strong> <strong>Мне нужно не больше задач, а больше смысла.</strong></p>
+            <p>Так начался мой переход к физике — не как к предмету, а как к способу думать. Здесь нельзя просто “натренироваться”. Каждая задача — это вызов не только знаниям, но и интуиции, логике, воображению. Здесь важна не только точность, но и честность: перед собой, перед природой, перед вопросом. <strong>Физика требует задавать вопросы фундаментального уровня — и не бояться, что ответов не будет.</strong> Мне стало ясно: если я хочу действительно понимать, как устроен мир — мне нужно идти глубже.</p>
+            <p>Моя любовь к ИИ тоже изменилась. Раньше я видела в нём лишь инструмент, магию, которую можно запрограммировать. Теперь я понимаю, что <strong>ИИ — это не просто код. Это попытка смоделировать мышление в его глубине.</strong> Чтобы строить системы, которые "понимают", нужно самому учиться думать — чётко, гибко, системно. Я не ушла от информатики — я сделала шаг внутрь неё. Ведь ИИ — это точка пересечения физики, математики, философии и инженерного мышления.</p>
+            <p>Сегодня я строю платформу, которую самой мне не хватало — для тех, кто хочет думать, а не просто решать. Это не просто сайт с задачами — это пространство, где важно не количество, а путь. Я разработала инструменты под себя и тех, кто тоже ищет настоящую сложность — не сложность “техническую”, а смысловую. Я осознанно отказалась от регистрации, рейтингов, баллов. Потому что для настоящего роста этого мало. Главное — личная работа, усилие, размышление.</p>
+            <p>Я не спешу. Мне не нужно делать всё сразу. Я учусь работать вглубь — и понимаю, что на это нужно время. Моё внимание сейчас — на стыке: физика, искусственный интеллект, фундаментальные идеи. Я читаю, проектирую, создаю, осмысляю. Я не знаю, куда приведёт этот путь — и это часть его силы. Возможно, в будущем я займусь физическим ИИ, симуляцией природы, квантовыми моделями, инженерией нового типа. Но уже сейчас я знаю: <strong>Моя цель — не побеждать, а понимать.</strong></p>
+            <p>Если ты читаешь это — и тоже чувствуешь, что хочешь большего, чем просто решать задачи — добро пожаловать. Этот путь не быстрый. Но он настоящий.</p>
+            <a href="articles.html" class="back-button">Ко всем статьям</a>
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
+
+            // Remove active class from all links
+            link.classList.remove('active');
+
+            // Highlight based on page
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    // For index.html, highlight based on hash
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    // For other pages (e.g., info.html, tasks.html), highlight based on path
+                    link.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

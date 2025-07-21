@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
+        }
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .articles-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .articles-section h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .articles-card {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .articles-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .articles-card h3 {
+            font-size: 1.7em;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #202124;
+        }
+        .articles-card a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+        .articles-card a:hover {
+            color: #ea4335;
+        }
+        .articles-card p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .articles-section h2 {
+                font-size: 1.8em;
+            }
+            .articles-card {
+                width: 100%;
+                max-width: 400px;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <a href="articles.html" class="nav-link active">Статьи</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+    <div class="articles-section">
+        <h2>Статьи</h2>
+        <div class="articles-card">
+            <p>Добро пожаловать в раздел, где мы не просто учимся решать задачи, а размышляем о сути науки и вдохновляемся на новые открытия.</p>
+            <p>Здесь вы найдёте мотивирующие эссе, глубокие статьи о физике, рассказы о выдающихся учёных и советы по развитию мышления и настойчивости.</p>
+            <p>Новая статья выйдет скоро — следите за обновлениями!</p>
+        </div>
+        <div class="articles-card">
+            <h3><a href="articles1.html" target="_blank">Почему вопрос «почему?» — ключ к истинному знанию</a></h3>
+        </div>
+        <div class="articles-card">
+            <h3><a href="articles2.html" target="_blank">Я думала, что решаю задачи. Оказалось — они решают меня.</a></h3>
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
+
+            // Remove active class from all links
+            link.classList.remove('active');
+
+            // Highlight based on page
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    // For index.html, highlight based on hash
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    // For other pages (e.g., info.html, tasks.html), highlight based on path
+                    link.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

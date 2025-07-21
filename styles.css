@@ -1,0 +1,18 @@
+.task-details-card {
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    text-align: left;
+    animation: fadeIn 1s ease-in-out;
+    background: #ffffff;
+    border: 1px solid #d3d3d3; /* Thin, simple gray border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow with 0.3 opacity */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.task-details-card:hover {
+    transform: scale(1.05); /* Increase size by 5% */
+    border-color: #FBBC05; /* Google-yellow border */
+}

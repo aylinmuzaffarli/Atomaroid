@@ -246,7 +246,7 @@
             <div class="handbook-details">
                 <img src="https://i.imgur.com/K922e1Q.png" alt="Олимпиадный гайд">
                 <p>Олимпиадный гайд</p>
-                <a href="https://example.com/olympiad-handbook.pdf" class="download-button" target="_blank">Скачать</a>
+                <a href="#" class="download-button" onclick="downloadFile('https://drive.google.com/uc?export=download&id=1SmBdqDilFO1B17DHA1GKHsUiauXKv3FZ', 'Olympiad_Handbook.pdf')">Скачать</a>
             </div>
         </div>
     </div>
@@ -316,24 +316,12 @@
 
         // Function to trigger file download
         function downloadFile(url, fileName) {
-            fetch(url, { method: 'GET', mode: 'cors' })
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.blob();
-                })
-                .then(blob => {
-                    const link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = fileName;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    window.URL.revokeObjectURL(link.href);
-                })
-                .catch(error => {
-                    console.error('Download failed:', error);
-                    window.open(url, '_blank');
-                });
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>

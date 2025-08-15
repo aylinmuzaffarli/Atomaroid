@@ -9,14 +9,17 @@
     <link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            padding-bottom: 60px; /* Space for fixed footer */
             background: #ffffff;
             color: #202124;
             line-height: 1.6;
         }
+
         .header {
             background: #ffffff;
             padding: 20px 40px;
@@ -30,11 +33,13 @@
             top: 0;
             z-index: 1000;
         }
+
         .header .logo {
             font-size: 1.8em;
             font-weight: 700;
             color: #1a73e8;
         }
+
         .header nav a {
             margin-left: 30px;
             text-decoration: none;
@@ -42,18 +47,22 @@
             font-weight: 600;
             transition: color 0.3s ease, border-bottom 0.3s ease;
         }
+
         .header nav a:hover {
             color: #1a73e8;
             border-bottom: 2px solid #1a73e8;
         }
+
         .header nav a.active {
             color: #1a73e8;
             border-bottom: 2px solid #1a73e8;
         }
+
         .dropdown {
             position: relative;
             display: inline-block;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -64,9 +73,11 @@
             z-index: 1000;
             margin-top: 5px;
         }
+
         .dropdown.active .dropdown-content {
             display: block;
         }
+
         .dropdown-content a {
             display: block;
             padding: 12px 16px;
@@ -76,11 +87,13 @@
             margin-left: 0;
             transition: color 0.3s ease, background 0.3s ease;
         }
+
         .dropdown-content a:hover {
             color: #1a73e8;
             background: #e8f0fe;
             border-bottom: none;
         }
+
         .handbook-section {
             max-width: 1200px;
             margin: 20px auto;
@@ -89,6 +102,7 @@
             border-radius: 16px;
             animation: fadeIn 1s ease-in-out;
         }
+
         .handbook-section h2 {
             text-align: center;
             font-size: 2em;
@@ -96,6 +110,7 @@
             color: #1a73e8;
             margin-bottom: 20px;
         }
+
         .handbook-card {
             background: #ffffff;
             padding: 25px;
@@ -106,11 +121,13 @@
             border: 2px solid transparent;
             overflow: hidden;
         }
+
         .handbook-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             border-color: #fbbc05;
         }
+
         .handbook-card h3 {
             font-size: 1.7em;
             font-weight: 600;
@@ -120,10 +137,12 @@
             align-items: center;
             cursor: pointer;
         }
+
         .handbook-card h3 .toggle-icon {
             margin-right: 10px;
             font-size: 1.2em;
         }
+
         .handbook-card h3 img.small-cover {
             width: 20px;
             height: auto;
@@ -131,6 +150,7 @@
             object-fit: cover;
             border-radius: 4px;
         }
+
         .handbook-details {
             display: none;
             margin-top: 15px;
@@ -139,9 +159,11 @@
             gap: 15px;
             padding: 15px 0;
         }
+
         .handbook-details.active {
             display: flex;
         }
+
         .handbook-details img {
             width: 100%;
             max-width: 300px;
@@ -149,12 +171,14 @@
             object-fit: contain;
             border-radius: 8px;
         }
+
         .handbook-details p {
             color: #5f6368;
             font-size: 1.1em;
             margin: 0;
             text-align: center;
         }
+
         .handbook-details a.download-button {
             display: inline-block;
             background: linear-gradient(90deg, #1a73e8, #34a853);
@@ -168,50 +192,115 @@
             text-decoration: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .handbook-details a.download-button:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             color: #ffffff;
         }
+
         footer {
             text-align: center;
             padding: 25px;
             background: #202124;
             color: #ffffff;
-            margin-top: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.5em;
             }
             .header nav {
                 margin-top: 10px;
             }
             .header nav a {
-                margin-left: 15px;
-                margin-right: 15px;
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 0.9em;
             }
             .dropdown-content {
-                min-width: 150px;
+                min-width: 120px;
+            }
+            .handbook-section {
+                margin: 10px;
+                padding: 15px;
             }
             .handbook-section h2 {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
             .handbook-card {
-                width: 100%;
-                max-width: 400px;
-                margin: 15px auto;
+                width: 90%;
+                max-width: 350px;
+                margin: 10px auto;
+                padding: 20px;
             }
             .handbook-details img {
-                max-width: 250px;
+                max-width: 200px;
             }
             .handbook-card h3 img.small-cover {
                 width: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 15px;
+                margin: 5px;
+            }
+            .header .logo {
+                font-size: 1.3em;
+            }
+            .header nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+                font-size: 0.85em;
+            }
+            .dropdown-content {
+                min-width: 100px;
+            }
+            .handbook-section {
+                margin: 5px;
+                padding: 10px;
+            }
+            .handbook-section h2 {
+                font-size: 1.4em;
+            }
+            .handbook-card {
+                width: 95%;
+                max-width: 300px;
+                margin: 10px auto;
+                padding: 15px;
+            }
+            .handbook-details img {
+                max-width: 150px;
+            }
+            .handbook-card h3 {
+                font-size: 1.4em;
+            }
+            .handbook-card h3 img.small-cover {
+                width: 12px;
+            }
+            .handbook-details p {
+                font-size: 0.9em;
+            }
+            .handbook-details a.download-button {
+                padding: 8px 16px;
+                font-size: 0.9em;
             }
         }
     </style>

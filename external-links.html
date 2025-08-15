@@ -96,8 +96,36 @@
             color: #1a73e8;
             margin-bottom: 20px;
         }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter-bar select, .filter-bar input {
+            padding: 10px;
+            font-size: 1.1em;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 200px;
+        }
+        .filter-bar select:focus, .filter-bar input:focus {
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            border-color: #1a73e8;
+        }
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
         .links-card {
             background: #ffffff;
+            width: calc((100% - 40px) / 3);
             padding: 25px;
             margin: 15px 0;
             border-radius: 16px;
@@ -105,6 +133,7 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid transparent;
+            box-sizing: border-box;
         }
         .links-card:hover {
             transform: translateY(-5px);
@@ -133,6 +162,13 @@
             font-size: 1.1em;
             margin: 10px 0;
         }
+        .no-links {
+            text-align: center;
+            font-size: 1.2em;
+            color: #5f6368;
+            margin: 20px 0;
+            width: 100%;
+        }
         footer {
             text-align: center;
             padding: 25px;
@@ -152,13 +188,33 @@
             .header nav {
                 margin-top: 10px;
             }
+            .header nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
+            }
             .links-section h2 {
                 font-size: 1.8em;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-bar select, .filter-bar input {
+                width: 80%;
+                max-width: 300px;
             }
             .links-card {
                 width: 100%;
                 max-width: 400px;
                 margin: 15px auto;
+            }
+        }
+        @media (min-width: 769px) {
+            .links-card {
+                width: calc((100% - 40px) / 3);
             }
         }
     </style>
@@ -184,66 +240,204 @@
     </div>
     <div class="links-section">
         <h2>Внешние ссылки на задачи</h2>
-        <div class="links-card">
-            <h3>Республиканская предметная олимпиада</h3>
-            <p>Задачи и материалы Республиканской предметной олимпиады по физике.</p>
-            <a href="https://azfizik.blogspot.com/p/olimpiada-meseleleri.html" target="_blank">Перейти</a>
+        <div class="filter-bar">
+            <select id="language-filter">
+                <option value="">Любой язык</option>
+                <option value="Azerbaijani">Азербайджанский</option>
+                <option value="International">Международный</option>
+            </select>
+            <input type="text" id="title-filter" placeholder="Поиск по названию или описанию">
         </div>
-        <div class="links-card">
-            <h3>IPhO Problems and Solutions</h3>
-            <p>Международная олимпиада по физике (IPhO): задачи и решения.</p>
-            <a href="https://ipho.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>APhO Problems and Solutions</h3>
-            <p>Азиатская олимпиада по физике (APhO): задачи и решения.</p>
-            <a href="https://apho.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>EuPhO Problems and Solutions</h3>
-            <p>Европейская олимпиада по физике (EuPhO): задачи и решения.</p>
-            <a href="https://eupho.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>NBPhO/Est-Fin Problems and Solutions</h3>
-            <p>Северо-Балтийская олимпиада по физике (NBPhO) и эстонско-финские задачи.</p>
-            <a href="https://nbpho.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>RMPh Problems and Solutions</h3>
-            <p>Российская олимпиада по физике (RMPh): задачи и решения.</p>
-            <a href="https://rmph.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>WoPhO Problems and Solutions</h3>
-            <p>Всемирная олимпиада по физике (WoPhO): задачи и решения.</p>
-            <a href="https://wopho.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>Balkan Physics Olympiad (BPhO)</h3>
-            <p>Балканская олимпиада по физике: задачи и материалы.</p>
-            <a href="https://balkanphysicalunion.info/?p=864" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>Ibero-American Physics Olympiad (OIbF)</h3>
-            <p>Иберо-Американская олимпиада по физике: задачи и решения.</p>
-            <a href="https://oibf.olimpicos.net/" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>Online Physics Olympiad (OPhO)</h3>
-            <p>Онлайн-олимпиада по физике: архив задач и решений.</p>
-            <a href="https://opho.physoly.tech/archives" target="_blank">Перейти</a>
-        </div>
-        <div class="links-card">
-            <h3>Physics Olympiad Hub</h3>
-            <p>Центр олимпиад по физике с задачами и ресурсами.</p>
-            <a href="https://physoly.tech/" target="_blank">Перейти</a>
+        <div class="links-list" id="links-list">
+            <div class="links-card">
+                <h3>Республиканская предметная олимпиада</h3>
+                <p>Задачи и материалы Республиканской предметной олимпиады по физике.</p>
+                <a href="https://azfizik.blogspot.com/p/olimpiada-meseleleri.html" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>IPhO Problems and Solutions</h3>
+                <p>Международная олимпиада по физике (IPhO): задачи и решения.</p>
+                <a href="https://ipho.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>APhO Problems and Solutions</h3>
+                <p>Азиатская олимпиада по физике (APhO): задачи и решения.</p>
+                <a href="https://apho.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>EuPhO Problems and Solutions</h3>
+                <p>Европейская олимпиада по физике (EuPhO): задачи и решения.</p>
+                <a href="https://eupho.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>NBPhO/Est-Fin Problems and Solutions</h3>
+                <p>Северо-Балтийская олимпиада по физике (NBPhO) и эстонско-финские задачи.</p>
+                <a href="https://nbpho.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>RMPh Problems and Solutions</h3>
+                <p>Российская олимпиада по физике (RMPh): задачи и решения.</p>
+                <a href="https://rmph.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>WoPhO Problems and Solutions</h3>
+                <p>Всемирная олимпиада по физике (WoPhO): задачи и решения.</p>
+                <a href="https://wopho.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>Balkan Physics Olympiad (BPhO)</h3>
+                <p>Балканская олимпиада по физике: задачи и материалы.</p>
+                <a href="https://balkanphysicalunion.info/?p=864" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>Ibero-American Physics Olympiad (OIbF)</h3>
+                <p>Иберо-Американская олимпиада по физике: задачи и решения.</p>
+                <a href="https://oibf.olimpicos.net/" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>Online Physics Olympiad (OPhO)</h3>
+                <p>Онлайн-олимпиада по физике: архив задач и решений.</p>
+                <a href="https://opho.physoly.tech/archives" target="_blank">Перейти</a>
+            </div>
+            <div class="links-card">
+                <h3>Physics Olympiad Hub</h3>
+                <p>Центр олимпиад по физике с задачами и ресурсами.</p>
+                <a href="https://physoly.tech/" target="_blank">Перейти</a>
+            </div>
         </div>
     </div>
     <footer>
         © 2025 Олимпиадная Платформа. Все права защищены.
     </footer>
     <script>
+        // Links data with language attributes
+        const links = [
+            {
+                id: 'link1',
+                title: 'Республиканская предметная олимпиада',
+                description: 'Задачи и материалы Республиканской предметной олимпиады по физике.',
+                url: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html',
+                language: 'Azerbaijani',
+                element: document.querySelectorAll('.links-card')[0]
+            },
+            {
+                id: 'link2',
+                title: 'IPhO Problems and Solutions',
+                description: 'Международная олимпиада по физике (IPhO): задачи и решения.',
+                url: 'https://ipho.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[1]
+            },
+            {
+                id: 'link3',
+                title: 'APhO Problems and Solutions',
+                description: 'Азиатская олимпиада по физике (APhO): задачи и решения.',
+                url: 'https://apho.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[2]
+            },
+            {
+                id: 'link4',
+                title: 'EuPhO Problems and Solutions',
+                description: 'Европейская олимпиада по физике (EuPhO): задачи и решения.',
+                url: 'https://eupho.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[3]
+            },
+            {
+                id: 'link5',
+                title: 'NBPhO/Est-Fin Problems and Solutions',
+                description: 'Северо-Балтийская олимпиада по физике (NBPhO) и эстонско-финские задачи.',
+                url: 'https://nbpho.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[4]
+            },
+            {
+                id: 'link6',
+                title: 'RMPh Problems and Solutions',
+                description: 'Российская олимпиада по физике (RMPh): задачи и решения.',
+                url: 'https://rmph.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[5]
+            },
+            {
+                id: 'link7',
+                title: 'WoPhO Problems and Solutions',
+                description: 'Всемирная олимпиада по физике (WoPhO): задачи и решения.',
+                url: 'https://wopho.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[6]
+            },
+            {
+                id: 'link8',
+                title: 'Balkan Physics Olympiad (BPhO)',
+                description: 'Балканская олимпиада по физике: задачи и материалы.',
+                url: 'https://balkanphysicalunion.info/?p=864',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[7]
+            },
+            {
+                id: 'link9',
+                title: 'Ibero-American Physics Olympiad (OIbF)',
+                description: 'Иберо-Американская олимпиада по физике: задачи и решения.',
+                url: 'https://oibf.olimpicos.net/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[8]
+            },
+            {
+                id: 'link10',
+                title: 'Online Physics Olympiad (OPhO)',
+                description: 'Онлайн-олимпиада по физике: архив задач и решений.',
+                url: 'https://opho.physoly.tech/archives',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[9]
+            },
+            {
+                id: 'link11',
+                title: 'Physics Olympiad Hub',
+                description: 'Центр олимпиад по физике с задачами и ресурсами.',
+                url: 'https://physoly.tech/',
+                language: 'International',
+                element: document.querySelectorAll('.links-card')[10]
+            }
+        ];
+
+        // Function to render links based on filters
+        function renderLinks(filteredLinks) {
+            const linksList = document.getElementById('links-list');
+            linksList.innerHTML = '';
+            if (filteredLinks.length === 0) {
+                linksList.innerHTML = '<p class="no-links">Ссылка не найдена. Пожалуйста, проверьте параметры поиска.</p>';
+                return;
+            }
+            filteredLinks.forEach(link => {
+                linksList.appendChild(link.element);
+            });
+        }
+
+        // Function to filter links
+        function filterLinks() {
+            const language = document.getElementById('language-filter').value;
+            const searchQuery = document.getElementById('title-filter').value.trim().toLowerCase();
+
+            const filteredLinks = links.filter(link => {
+                const matchesLanguage = !language || link.language === language;
+                const matchesSearch = !searchQuery || 
+                    link.title.toLowerCase().includes(searchQuery) || 
+                    link.description.toLowerCase().includes(searchQuery);
+                return matchesLanguage && matchesSearch;
+            });
+
+            renderLinks(filteredLinks);
+        }
+
+        // Add event listeners to filters
+        document.getElementById('language-filter').addEventListener('change', filterLinks);
+        document.getElementById('title-filter').addEventListener('input', filterLinks);
+
+        // Initial render
+        renderLinks(links);
+
         // Highlight active navigation link based on page and section
         const navLinks = document.querySelectorAll('.nav-link');
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';

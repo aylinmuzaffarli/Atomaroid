@@ -106,11 +106,18 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-in-out;
         }
+        .banner-text {
+            max-width: 900px;
+            margin: 0 auto;
+        }
         .main-banner h1 {
             margin: 0;
             font-size: 3em;
             font-weight: 700;
             color: #202124;
+            line-height: 1.3;
+            word-break: normal;
+            white-space: normal;
         }
         .main-banner p {
             margin: 20px 0;
@@ -299,6 +306,20 @@
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
+        @media (max-width: 480px) {
+            .main-banner h1 {
+                font-size: 2.2em;
+                line-height: 1.3;
+                word-break: normal;
+                white-space: normal;
+            }
+            .main-banner p {
+                font-size: 1em;
+            }
+            .banner-text {
+                max-width: 90%;
+            }
+        }
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -337,9 +358,11 @@
         </nav>
     </div>
     <div id="home" class="main-banner">
-        <h1>Atomaroid — платформа для подготовки к олимпиадам по физике в Азербайджане</h1>
-        <p>Решайте задачи, изучайте решения и готовьтесь к победам!</p>
-        <button onclick="document.querySelector('.popular-tasks-section').scrollIntoView({behavior: 'smooth'})">Начать решать</button>
+        <div class="banner-text">
+            <h1>Atomaroid — платформа для подготовки к олимпиадам по физике в Азербайджане</h1>
+            <p>Решайте задачи, изучайте решения и готовьтесь к победам!</p>
+            <button onclick="document.querySelector('.popular-tasks-section').scrollIntoView({behavior: 'smooth'})">Начать решать</button>
+        </div>
     </div>
     <div class="popular-tasks-section">
         <h2>Популярные задачи</h2>

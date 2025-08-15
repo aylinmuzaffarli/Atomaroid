@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задача - Олимпиадная Платформа</title>
+    <title>Задачи - Atomaroid</title>
+    <link rel="icon" type="image/webp" href="https://i.imgur.com/j9sEeC4_d.webp?maxwidth=760&fidelity=grand">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -12,614 +14,487 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background: #ffffff;
             color: #202124;
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: none;
         }
         .header {
-    background: #ffffff;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.header .logo {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #1a73e8;
-}
-.header nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: #202124;
-    font-weight: 600;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-.header nav a:hover {
-    color: #1a73e8;
-    border-bottom: 2px solid #1a73e8;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: #ffffff;
-    min-width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1000;
-    margin-top: 5px;
-}
-.dropdown.active .dropdown-content {
-    display: block;
-}
-.dropdown-content a {
-    display: block;
-    padding: 12px 16px;
-    text-decoration: none;
-    color: #202124;
-    font-weight: 600;
-}
-.dropdown-content a:hover {
-    color: #1a73e8;
-    background: #e8f0fe;
-}
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .header nav a {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-}
-
-        .task-details-card {
-            max-width: 800px;
-            width: 90%;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 16px;
-            text-align: left;
-            animation: fadeIn 1s ease-in-out;
             background: #ffffff;
-            border: 1px solid #5f6368;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .task-details-card:hover {
-            transform: scale(1.05);
-            border-color: #FBBC05;
-        }
-        .task-image {
-            max-width: 100%;
-            height: auto;
-            margin: 10px 0;
-            border-radius: 4px;
-            box-shadow: none;
-        }
-        .task-details-card h1 {
-            font-size: 2em;
+        .header .logo {
+            font-size: 1.8em;
             font-weight: 700;
             color: #1a73e8;
-            margin-bottom: 10px;
         }
-        .task-details-card p {
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .tasks-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .tasks-section h1 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter-bar select, .filter-bar input {
+            padding: 10px;
             font-size: 1.1em;
-            margin: 10px 0;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 200px;
+        }
+        .filter-bar select:focus, .filter-bar input:focus {
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            border-color: #1a73e8;
+        }
+        .tasks-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .task-card {
+            background: #ffffff;
+            width: calc((100% - 40px) / 3);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            box-sizing: border-box;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .task-card h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin: 0 0 15px 0;
             color: #202124;
         }
-        .task-details-card .options {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        .task-details-card .options p {
-            margin: 5px 0;
-        }
-        .source {
-            font-size: 0.9em;
-            color: #5f6368;
-            text-align: right;
-            margin-top: 10px;
-        }
-        .source a {
-            color: #1a73e8;
+        .task-card a {
             text-decoration: none;
+            color: #1a73e8;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
             transition: color 0.3s ease;
         }
-        .source a:hover {
+        .task-card a:hover {
             color: #ea4335;
         }
-        .back-button {
-            background: linear-gradient(90deg, #1a73e8, #34a853);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-            margin-top: 10px;
+        .no-tasks {
+            text-align: center;
+            font-size: 1.2em;
+            color: #5f6368;
+            margin: 20px 0;
+            width: 100%;
         }
-        .back-button:hover {
-            transform: scale(1.05);
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         @media (max-width: 768px) {
-            .task-details-card {
-                padding: 15px;
+            .header {
+                flex-direction: column;
+                gap: 15px;
             }
-            .task-details-card h1 {
-                font-size: 1.5em;
+            .header nav {
+                margin-top: 10px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-bar select, .filter-bar input {
+                width: 80%;
+                max-width: 300px;
+            }
+            .task-card {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+        @media (min-width: 769px) {
+            .task-card {
+                width: calc((100% - 40px) / 3);
             }
         }
     </style>
 </head>
 <body>
-    <div class="task-details-card" id="task-details">
-        <div class="header">
-    <div class="logo">Atomaroid</div>
-    <nav>
-        <a href="info.html" class="nav-link">О платформе</a>
-        <a href="index.html#home" class="nav-link">Главная</a>
-        <a href="tasks.html" class="nav-link">Задачи</a>
-        <div class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle">Материалы</a>
-            <div class="dropdown-content">
-                <a href="books.html">Книги и PDF</a>
-                <a href="external-links.html">Внешние ссылки на задачи</a>
-                <a href="handbook.html">Олимпиадный гайд</a>
-            </div>
-        </div>
-        <a href="articles.html" class="nav-link" target="_blank">Статьи</a>
-        <a href="index.html#contact" class="nav-link">Контакты</a>
-    </nav>
-</div>
-
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <a href="articles.html" class="nav-link">Статьи</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
     </div>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const taskId = urlParams.get('id');
-        const tasks = {
-            'rfo2025-8-1': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', description: 'Какое минимальное количество теплоты нужно передать 2 кг воды с температурой 40°C, чтобы нагреть ее до температуры кипения?', options: ['A) 84 кДж', 'B) 504 кДж', 'C) 144 кДж', 'D) 674 кДж', 'E) 336 кДж'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rpc2025-7-1': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 1', description: 'Измеряемые или наблюдаемые свойства тела или явления называют физическими величинами.', options: ['A) наблюдаемые', 'B) вычисляемые', 'C) предполагаемые', 'D) округленные'], source: '' },
-            'rpc2025-7-2': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 2', description: 'Измерить физическую величину, это значит сравнить её с ... , выбранным для этой величины.', options: ['A) измерительным прибором', 'B) измерительной лентой', 'C) единицей измерения', 'D) погрешность измерения'], source: '' },
-            'rpc2025-7-3': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 3', description: 'Ученик измеряет длину классной комнаты шагами и измерительной лентой. Результаты: "20 шагов" и "5 метров". Найдите длину шага ученика в мм.', options: ['A) 250 мм', 'B) 4 мм', 'C) 0,25 мм', 'D) 100 мм'], source: '' },
-            'rpc2025-7-4': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 4', description: 'Найдите основную единицу СИ.', options: ['A) 1 пяд', 'B) 1 м', 'C) 1 см', 'D) 1 км'], source: '' },
-            'rpc2025-7-7': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 7', description: 'В каком пункте указана физическая величина?', options: ['A) длина', 'B) метр', 'C) секунда', 'D) линейка'], source: '' },
-            'rpc2025-7-11': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 11', description: 'Велосипедист проходит первую половину пути со скоростью 6 м/с, вторую — 12 м/с. Найдите среднюю скорость в км/ч.', options: ['A) 32,4 км/ч', 'B) 28,8 км/ч', 'C) 14,4 км/ч', 'D) 64,8 км/ч'], source: '' },
-            'rpc2025-7-17': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 17', description: 'Какое предположение не соответствует опыту Резерфорда?', options: ['A) Внутри атома есть пустота.', 'B) Ядро обладает положительным зарядом.', 'C) В центре атома расположено ядро.', 'D) Ядро состоит из протонов и нейтронов.'], source: '' },
-            'rpc2025-7-18': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 18', description: 'Какое утверждение не соответствует моделям Томсона и Резерфорда?', options: ['A) Вещество состоит из атомов.', 'B) Заряд атома равен нулю.', 'C) Внутри атома есть электроны.', 'D) Электроны вращаются вокруг ядра по определённым орбитам.'], source: '' },
-            'rpc2025-7-20': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 20', description: 'Дейтерий и тритий имеют одинаковое количество протонов. Найдите верное выражение.', options: ['A) Одинаковые химические и физические свойства.', 'B) Одинаковые химические, разные физические.', 'C) Разные химические и физические свойства.', 'D) Одинаковые физические, разные химические свойства.'], source: '' },
-            'rpc2025-7-21': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 21', description: 'Ион бериллия имеет заряд +2е. Что произошло?', options: ['A) Он потерял два электрона.', 'B) Он приобрёл два электрона.', 'C) Он потерял два протона.', 'D) Он приобрёл два протона.'], source: '' },
-            'rpc2025-7-22': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 22', description: 'Какое явление происходит при электризации трением?', options: ['A) Положительные заряды переходят с одного тела на другое.', 'B) Отрицательные заряды переходят с одного тела на другое.', 'C) Оба тела заряжаются одноимёнными зарядами.', 'D) И положительные, и отрицательные заряды меняют своё местоположение.'], source: '' },
-            'rpc2025-7-25': { title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 25', description: 'Что невозможно наблюдать, если привести шарик незаряженного электроскопа в контакт с каким-либо телом?', options: ['A) Небольшое расхождение листочков', 'B) Притяжение листочков друг к другу', 'C) Сильное расхождение листочков', 'D) Вертикальное расположение листочков'], source: '' },
-            'rfo2025-8-2': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 2', description: 'Какое минимальное количество керосина необходимо для того, чтобы нагреть воду, данную в задаче 1 (удельная теплота сгорания керосина q = 42 МДж/кг)?', options: ['A) 6 г', 'B) 10 г', 'C) 12 г', 'D) 2 г', 'E) 4 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-3': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 3', description: 'Какое количество воды с температурой 70°C нужно добавить к 500 г воды с температурой 10°C, чтобы установившаяся температура воды равнялась 40°C?', options: ['A) 1 кг', 'B) 1,25 кг', 'C) 1,5 кг', 'D) 500 г', 'E) 750 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-4': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 4', description: 'Первую половину пути автомобиль проехал со скоростью 30 км/ч. С какой скоростью автомобиль должен проехать вторую половину пути, чтобы средняя скорость на всём пути равнялась 40 км/ч?', options: ['A) 20 км/ч', 'B) 60 км/ч', 'C) 30 км/ч', 'D) 50 км/ч', 'E) 40 км/ч'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-5': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 5', description: 'Чему равен модуль ускорения торможения поезда метро, если за t = 5 с его скорость уменьшилась с \\( \\upsilon_1 = 72 \\) км/ч до \\( \\upsilon_2 = 54 \\) км/ч?', options: ['A) 1 м/с²', 'B) 2,5 м/с²', 'C) 2 м/с²', 'D) 0,5 м/с²', 'E) 1,5 м/с²'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-6': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 6', description: 'Два автомобиля, расстояние между которыми в начальный момент времени составляло 3 км, начинают равномерное движение в одинаковом направлении со скоростями \\( \\upsilon_1 = 15 \\) м/с и \\( \\upsilon_2 = 10 \\) м/с. Через какое время первый автомобиль догонит второй?', options: ['A) 5 мин', 'B) 10 мин', 'C) 15 мин', 'D) 20 мин', 'E) 25 мин'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-7': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 7', description: 'Мраморная колонна с радиусом основания 30 см и высотой 2 м расположена на горизонтальной плоскости таким образом, что основание колонны лежит на плоскости. Вычислите давление, оказываемое колонной на поверхность. Плотность мрамора 2500 кг/м³.', options: ['A) 25 кПа', 'B) 10 кПа', 'C) 15 кПа', 'D) 45 кПа', 'E) 50 кПа'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-10': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 10', description: 'Упругая пружина длиной 10 см подвешена вертикально к потолку. Если к другому концу этой пружины подвесить груз массой 6 кг, то длина пружины увеличится на 20%. Вычислите жёсткость пружины.', options: ['A) 2 кН/м', 'B) 3 кН/м', 'C) 4 кН/м', 'D) 5 кН/м', 'E) 6 кН/м'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-12': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 12', description: 'Кинетическая энергия тела, брошенного вертикально вверх с поверхности Земли, на высоте 10 м в 2 раза больше его потенциальной энергии относительно земли. Вычислите максимальную высоту подъёма этого тела.', options: ['A) 20 м', 'B) 40 м', 'C) 60 м', 'D) 30 м', 'E) 100 м'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-19': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 19', description: 'Однородное тело плавает на границе двух несмешивающихся жидкостей с плотностями \\( \\rho_1 = 600 \\) кг/м³ и \\( \\rho_2 = 1000 \\) кг/м³. Вычислите плотность тела, если 25% его объёма находится внутри жидкости с большей плотностью.', options: ['A) 650 кг/м³', 'B) 680 кг/м³', 'C) 620 кг/м³', 'D) 720 кг/м³', 'E) 700 кг/м³'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-20': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 20', description: 'Нагреватель воды с полезной мощностью 1000 Вт заполнен 4 литрами воды с начальной температурой 25°C. Через какое время после включения нагревателя вода начнёт кипеть?', options: ['A) 7 мин', 'B) 14 мин', 'C) 21 мин', 'D) 28 мин', 'E) 35 мин'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-21': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 21', description: 'При нормальном атмосферном давлении температуры замерзания и кипения воды по шкале X термометра равны соответственно 20°X и 160°X. Каким будет показание этого термометра X при температуре воздуха 25°C?', options: ['A) 25°X', 'B) 35°X', 'C) 45°X', 'D) 55°X', 'E) 65°X'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-24': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 24', description: 'Во сколько раз увеличится максимальная высота подъема тела, брошенного вертикально вверх, если его начальную скорость увеличить в n раз?', options: ['A) 2n', 'B) n', 'C) n²', 'D) n²/2', 'E) n/2'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-8-25': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 25', description: 'Пуля массой 5 г приводится в движение под действием сжатой пружины игрушечного пистолета. Вычислите жёсткость пружины, если при сжатии пружины на 5 см пуля вылетает из ствола со скоростью 5 м/с.', options: ['A) 20 Н/м', 'B) 100 Н/м', 'C) 10 Н/м', 'D) 5 Н/м', 'E) 50 Н/м'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-1': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 1', description: 'Два автомобиля, расстояние между которыми в начальный момент времени составляло 3 км, начинают равномерное движение в одинаковом направлении со скоростями \\( \\upsilon_1 = 15 \\) м/с и \\( \\upsilon_2 = 10 \\) м/с. Через какое время первый автомобиль догонит второй?', options: ['A) 5 мин', 'B) 10 мин', 'C) 15 мин', 'D) 20 мин', 'E) 25 мин'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-2': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 2', description: 'Однородное тело плавает на границе двух несмешивающихся жидкостей с плотностями \\( \\rho_1 = 600 \\) кг/м³ и \\( \\rho_2 = 1000 \\) кг/м³. Вычислите плотность тела, если 25% его объёма находится внутри жидкости с большей плотностью.', options: ['A) 650 кг/м³', 'B) 680 кг/м³', 'C) 620 кг/м³', 'D) 720 кг/м³', 'E) 700 кг/м³'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-5': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 5', description: 'Какое количество воды с температурой 70°C нужно добавить к 500 г воды с температурой 10°C, чтобы установившаяся температура воды равнялась 40°C?', options: ['A) 1 кг', 'B) 1,25 кг', 'C) 1,5 кг', 'D) 500 г', 'E) 750 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-6': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 6', description: 'Определите температурный коэффициент сопротивления металла, если сопротивление проводника, изготовленного из этого металла, при 0°C равно 4 Ом, а при 80°C – 4,4 Ом.', options: ['A) 5,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'B) 3,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'C) 1,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'D) 2,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'E) 4,25 \\cdot 10^{-3} \\text{°C}^{-1}'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-7': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 7', description: 'Кинетическая энергия тела, брошенного вертикально вверх с поверхности Земли, на высоте 10 м в 2 раза больше его потенциальной энергии относительно земли. Вычислите максимальную высоту подъёма этого тела.', options: ['A) 20 м', 'B) 40 м', 'C) 60 м', 'D) 30 м', 'E) 100 м'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-14': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 14', description: 'Мраморная колонна с радиусом основания 30 см и высотой 2 м расположена на горизонтальной плоскости таким образом, что основание колонны лежит на плоскости. Вычислите давление, оказываемое колонной на поверхность. Плотность мрамора 2500 кг/м³.', options: ['A) 25 кПа', 'B) 10 кПа', 'C) 15 кПа', 'D) 45 кПа', 'E) 50 кПа'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-16': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 16', description: 'Какое минимальное количество теплоты нужно передать 2 кг воды с температурой 40°C, чтобы нагреть ее до температуры кипения?', options: ['A) 84 кДж', 'B) 504 кДж', 'C) 144 кДж', 'D) 674 кДж', 'E) 336 кДж'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-17': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 17', description: 'Какое минимальное количество керосина необходимо для того, чтобы нагреть воду, данную в задаче 16 (удельная теплота сгорания керосина q = 42 МДж/кг)?', options: ['A) 6 г', 'B) 10 г', 'C) 12 г', 'D) 2 г', 'E) 4 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-18': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 18', description: 'Автомобиль первую треть пути проехал со скоростью 40 км/ч, вторую треть со скоростью 60 км/ч. С какой скоростью автомобиль должен проехать последнюю треть пути, чтобы средняя скорость на всём пути составила 40 км/ч?', options: ['A) 20 км/ч', 'B) 60 км/ч', 'C) 30 км/ч', 'D) 50 км/ч', 'E) 40 км/ч'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-9-21': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 21', description: 'Нагреватель с сопротивлением R = 36 Ом подсоединён к источнику постоянного тока с напряжением U = 120 В. За какое время в нагревателе выделится количество теплоты 360 кДж?', options: ['A) 5 мин', 'B) 10 мин', 'C) 15 мин', 'D) 20 мин', 'E) 25 мин'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-2': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 2', description: 'Нагреватель с сопротивлением R = 36 Ом подсоединён к источнику постоянного тока с напряжением U = 120 В. За какое время в нагревателе выделится количество теплоты 360 кДж?', options: ['A) 5 мин', 'B) 10 мин', 'C) 15 мин', 'D) 20 мин', 'E) 25 мин'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-5': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 5', description: 'Какое минимальное количество теплоты нужно передать 2 кг воды с температурой 40°C, чтобы нагреть ее до температуры кипения?', options: ['A) 84 кДж', 'B) 504 кДж', 'C) 144 кДж', 'D) 674 кДж', 'E) 336 кДж'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-6': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 6', description: 'Какое минимальное количество керосина необходимо для того, чтобы нагреть воду, данную в задаче 5 (удельная теплота сгорания керосина q = 42 МДж/кг)?', options: ['A) 6 г', 'B) 10 г', 'C) 12 г', 'D) 2 г', 'E) 4 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-7': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 7', description: 'Определите температурный коэффициент сопротивления металла, если сопротивление проводника, изготовленного из этого металла, при 0°C равно 4 Ом, а при 80°C – 4,4 Ом.', options: ['A) 5,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'B) 3,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'C) 1,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'D) 2,25 \\cdot 10^{-3} \\text{°C}^{-1}', 'E) 4,25 \\cdot 10^{-3} \\text{°C}^{-1}'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-8': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 8', description: 'Автомобиль первую треть пути проехал со скоростью 40 км/ч, вторую треть со скоростью 60 км/ч. С какой скоростью автомобиль должен проехать последнюю треть пути, чтобы средняя скорость на всём пути составила 40 км/ч?', options: ['A) 20 км/ч', 'B) 60 км/ч', 'C) 30 км/ч', 'D) 50 км/ч', 'E) 40 км/ч'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-10': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 10', description: 'Тело, брошенное вертикально вверх с поверхности земли, через 5 секунд возвращается в точку бросания. Чему равнялась скорость этого тела через 2 секунды после броска?', options: ['A) 10 м/с', 'B) 5 м/с', 'C) 25 м/с', 'D) 20 м/с', 'E) 15 м/с'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-15': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 15', description: 'Автомобиль, движущийся с постоянной скоростью 20 м/с, тормозит и, двигаясь равноускоренно, уменьшает скорость в два раза за 2 секунды. Вычислите длину полного тормозного пути автомобиля.', options: ['A) 20 м', 'B) 80 м', 'C) 160 м', 'D) 10 м', 'E) 40 м'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-'rfo2025-8-8': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 8', description: '<img src="https://i.imgur.com/7SigEDc.png" alt="Task 8 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-9': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 9', description: '<img src="https://i.imgur.com/gvzVBZ7_d.webp?maxwidth=760&fidelity=grand" alt="Task 9 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-11': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 11', description: '<img src="https://i.imgur.com/ZffIEeS_d.webp?maxwidth=760&fidelity=grand" alt="Task 11 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-13': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 13', description: '<img src="https://i.imgur.com/F9naSaV_d.webp?maxwidth=760&fidelity=grand" alt="Task 13 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-14': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 14', description: '<img src="https://i.imgur.com/QlfhUmQ_d.webp?maxwidth=760&fidelity=grand" alt="Task 14 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-15': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 15', description: '<img src="https://i.imgur.com/hBh7HvG_d.webp?maxwidth=760&fidelity=grand" alt="Task 15 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-16': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 16', description: '<img src="https://i.imgur.com/o3fqjY3_d.webp?maxwidth=760&fidelity=grand" alt="Task 16 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-17': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 17', description: '<img src="https://i.imgur.com/5H09eV7_d.webp?maxwidth=760&fidelity=grand" alt="Task 17 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-18': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 18', description: '<img src="https://i.imgur.com/ue9ulIA_d.webp?maxwidth=760&fidelity=grand" alt="Task 18 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-22': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 22', description: '<img src="https://i.imgur.com/FuFHMiI_d.webp?maxwidth=760&fidelity=grand" alt="Task 22 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-8-23': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 23', description: '<img src="https://i.imgur.com/5pIglm0_d.webp?maxwidth=760&fidelity=grand" alt="Task 23 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-3': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 3', description: '<img src="https://i.imgur.com/UsCcZzL_d.webp?maxwidth=760&fidelity=grand" alt="Task 3 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-4': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 4', description: '<img src="https://i.imgur.com/paW7OLL_d.webp?maxwidth=760&fidelity=grand" alt="Task 4 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-8': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 8', description: '<img src="https://i.imgur.com/U8NH8cC_d.webp?maxwidth=760&fidelity=grand" alt="Task 8 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-9': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 9', description: '<img src="https://imgur.com/a/Xzsim4y" alt="Task 9 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-10': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 10', description: '<img src="https://i.imgur.com/TvHeuZj.png" alt="Task 10 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-11': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 11', description: '<img src="https://i.imgur.com/rVdA60F_d.webp?maxwidth=760&fidelity=grand" alt="Task 11 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-12': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 12', description: '<img src="https://i.imgur.com/FYM3zgL.png" alt="Task 12 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-'rfo2025-11-1': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 1', description: '<img src="https://i.imgur.com/yulTFON_d.webp?maxwidth=760&fidelity=grand" alt="Task 1 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-2': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 2', description: '<img src="https://i.imgur.com/f2ISbpO_d.webp?maxwidth=760&fidelity=grand" alt="Task 2 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-3': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 3', description: '<img src="https://i.imgur.com/JjyaPza_d.webp?maxwidth=760&fidelity=grand" alt="Task 3 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-4': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 4', description: '<img src="https://i.imgur.com/zMYBKW7_d.webp?maxwidth=760&fidelity=grand" alt="Task 4 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-5': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 5', description: '<img src="https://i.imgur.com/o8aZcMA_d.webp?maxwidth=760&fidelity=grand" alt="Task 5 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-6': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 6', description: '<img src="https://i.imgur.com/DSksB3g_d.webp?maxwidth=760&fidelity=grand" alt="Task 6 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-7': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 7', description: '<img src="https://i.imgur.com/2u1BezK_d.webp?maxwidth=760&fidelity=grand" alt="Task 7 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-8': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 8', description: '<img src="https://i.imgur.com/X1gR1dW_d.webp?maxwidth=760&fidelity=grand" alt="Task 8 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-9': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 9', description: '<img src="https://i.imgur.com/nMaD0i5_d.webp?maxwidth=760&fidelity=grand" alt="Task 9 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-10': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 10', description: '<img src="https://i.imgur.com/y1UFFwD_d.webp?maxwidth=760&fidelity=grand" alt="Task 10 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-11': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 11', description: '<img src="https://i.imgur.com/dmFi5qN_d.webp?maxwidth=760&fidelity=grand" alt="Task 11 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-12': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 12', description: '<img src="https://i.imgur.com/WZ6VTKL.png" alt="Task 12 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-13': { title: 'Республиканская предмет личноая олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 13', description: '<img src="https://i.imgur.com/C2nGDK8_d.webp?maxwidth=760&fidelity=grand" alt="Task 13 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-14': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 14', description: '<img src="https://i.imgur.com/GaZKnET_d.webp?maxwidth=760&fidelity=grand" alt="Task 14 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-15': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 15', description: '<img src="https://i.imgur.com/OOqkTsV_d.webp?maxwidth=760&fidelity=grand" alt="Task 15 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-16': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 16', description: '<img src="https://i.imgur.com/BVw5qJG_d.webp?maxwidth=760&fidelity=grand" alt="Task 16 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-17': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 17', description: '<img src="https://i.imgur.com/LVJCAe7_d.webp?maxwidth=760&fidelity=grand" alt="Task 17 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-18': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 18', description: '<img src="https://i.imgur.com/wzxvyMC_d.webp?maxwidth=760&fidelity=grand" alt="Task 18 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-19': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 19', description: '<img src="https://i.imgur.com/dPDCAIp_d.webp?maxwidth=760&fidelity=grand" alt="Task 19 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-20': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 20', description: '<img src="https://i.imgur.com/espchdZ_d.webp?maxwidth=760&fidelity=grand" alt="Task 20 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-21': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 21', description: '<img src="https://i.imgur.com/TQqBA3G_d.webp?maxwidth=760&fidelity=grand" alt="Task 21 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-22': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 22', description: '<img src="https://i.imgur.com/vUVIRic_d.webp?maxwidth=760&fidelity=grand" alt="Task 22 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-23': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 23', description: '<img src="https://i.imgur.com/RoB7a2s_d.webp?maxwidth=760&fidelity=grand" alt="Task 23 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-24': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 24', description: '<img src="https://i.imgur.com/eIffm88_d.webp?maxwidth=760&fidelity=grand" alt="Task 24 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-11-25': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 25', description: '<img src="https://i.imgur.com/2gpnblD_d.webp?maxwidth=760&fidelity=grand" alt="Task 25 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-13': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 13', description: '<img src="https://i.imgur.com/iWbOXWh_d.webp?maxwidth=760&fidelity=grand" alt="Task 13 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-15': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 15', description: '<img src="https://i.imgur.com/06c7JMX_d.webp?maxwidth=760&fidelity=grand" alt="Task 15 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-19': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 19', description: '<img src="https://i.imgur.com/nuyDodf.png" alt="Task 19 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-20': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 20', description: '<img src="https://i.imgur.com/adBZGnQ_d.webp?maxwidth=760&fidelity=grand" alt="Task 20 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-22': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 22', description: '<img src="https://i.imgur.com/y5tvZvP_d.webp?maxwidth=760&fidelity=grand" alt="Task 22 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-23': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 23', description: '<img src="https://i.imgur.com/9o5wRcW_d.webp?maxwidth=760&fidelity=grand" alt="Task 23 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-24': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 24', description: '<img src="https://i.imgur.com/uBOgkAa_d.webp?maxwidth=760&fidelity=grand" alt="Task 24 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-    'rfo2025-9-25': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 25', description: '<img src="https://i.imgur.com/HJI4sKA_d.webp?maxwidth=760&fidelity=grand" alt="Task 25 Description" class="task-image">', source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
- "rfo2025-89-1": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 1",
-    "description": "<img src=\"https://i.imgur.com/m83ecx9_d.webp?maxwidth=760&fidelity=grand\" alt=\"Task 1 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-2": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 2",
-    "description": "<img src=\"https://i.imgur.com/S3EYMiY.png\" alt=\"Task 2 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-3": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 3",
-    "description": "<img src=\"https://i.imgur.com/vfsjiW5.png\" alt=\"Task 3 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-4": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 4",
-    "description": "<img src=\"https://i.imgur.com/ZiVu7Sb.png\" alt=\"Task 4 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-5": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 5",
-    "description": "<img src=\"https://i.imgur.com/zMQKRxx.png\" alt=\"Task 5 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-6": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 6",
-    "description": "<img src=\"https://i.imgur.com/Yd6EMTF.png\" alt=\"Task 6 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-7": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 7",
-    "description": "<img src=\"https://i.imgur.com/GV8BJvo.png\" alt=\"Task 7 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-8": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 8",
-    "description": "<img src=\"https://i.imgur.com/7D3ZOTH.png\" alt=\"Task 8 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-9": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 9",
-    "description": "<img src=\"https://i.imgur.com/iSkCHME.png\" alt=\"Task 9 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-10": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 10",
-    "description": "<img src=\"https://i.imgur.com/j6kVOy9.png\" alt=\"Task 10 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-11": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 11",
-    "description": "<img src=\"https://i.imgur.com/j6kVOy9.png\" alt=\"Task 11 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-12": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 12",
-    "description": "<img src=\"https://i.imgur.com/XrC3MDB.png\" alt=\"Task 12 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-13": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 13",
-    "description": "<img src=\"https://i.imgur.com/yXYT7Tz.png\" alt=\"Task 13 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-14": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 14",
-    "description": "<img src=\"https://i.imgur.com/yXYT7Tz.png\" alt=\"Task 14 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-15": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 15",
-    "description": "<img src=\"https://i.imgur.com/EKCz6Zn.png\" alt=\"Task 15 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-16": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 16",
-    "description": "<img src=\"https://i.imgur.com/g26mmmN.png\" alt=\"Task 16 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-17": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 17",
-    "description": "<img src=\"https://i.imgur.com/PnEJZje.png\" alt=\"Task 17 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-18": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 18",
-    "description": "<img src=\"https://i.imgur.com/nRTVQpj.png\" alt=\"Task 18 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-19": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 19",
-    "description": "<img src=\"https://i.imgur.com/GfFTiWh.png\" alt=\"Task 19 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-20": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 20",
-    "description": "<img src=\"https://i.imgur.com/bedP5Nt.png\" alt=\"Task 20 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-21": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 21",
-    "description": "<img src=\"https://i.imgur.com/bedP5Nt.png\" alt=\"Task 21 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-22": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 22",
-    "description": "<img src=\"https://i.imgur.com/OD0AlpC.png\" alt=\"Task 22 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-23": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 23",
-    "description": "<img src=\"https://i.imgur.com/cXYZCUL.png\" alt=\"Task 23 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-24": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 24",
-    "description": "<img src=\"https://i.imgur.com/E49BVsY.png\" alt=\"Task 24 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-25": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 25",
-    "description": "<img src=\"https://i.imgur.com/lvnAzt2.png\" alt=\"Task 25 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-26": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 26",
-    "description": "<img src=\"https://i.imgur.com/4QGyTpV.png\" alt=\"Task 26 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-27": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 27",
-    "description": "<img src=\"https://i.imgur.com/YmYCf2o.png\" alt=\"Task 27 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-28": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 28",
-    "description": "<img src=\"https://i.imgur.com/VwuCg9H.png\" alt=\"Task 28 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-29": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 29",
-    "description": "<img src=\"https://i.imgur.com/EuZI3cR.png\" alt=\"Task 29 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-  "rfo2025-89-30": {
-    "title": "Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 30",
-    "description": "<img src=\"https://i.imgur.com/sDiFJsr.png\" alt=\"Task 30 Description\" class=\"task-image\">",
-    "source": "https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf"
-  },
-       'rfo2025-10-18': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 18', description: 'Какое количество воды с температурой 70°C нужно добавить к 500 г воды с температурой 10°C, чтобы установившаяся температура воды равнялась 40°C?', options: ['A) 1 кг', 'B) 1,25 кг', 'C) 1,5 кг', 'D) 500 г', 'E) 750 г'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-            'rfo2025-10-25': { title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 25', description: 'Однородное тело плавает на границе двух несмешивающихся жидкостей с плотностями \\( \\rho_1 = 600 \\) кг/м³ и \\( \\rho_2 = 1000 \\) кг/м³. Вычислите плотность тела, если 25% его объёма находится внутри жидкости с большей плотностью.', options: ['A) 650 кг/м³', 'B) 680 кг/м³', 'C) 620 кг/м³', 'D) 720 кг/м³', 'E) 700 кг/м³'], source: 'https://azfizik.blogspot.com/p/olimpiada-meseleleri.html' },
-        
- 'rfo2025-1011-1': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 1', 
-        description: '<img src="https://i.imgur.com/gpg4tGO.png" alt="Task 1 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-2': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 2', 
-        description: '<img src="https://i.imgur.com/mCrUB3v.png" alt="Task 2 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-3': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 3', 
-        description: '<img src="https://i.imgur.com/hrKx8e0.png" alt="Task 3 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-4': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 4', 
-        description: '<img src="https://i.imgur.com/xrZjh5A.png" alt="Task 4 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-5': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 5', 
-        description: '<img src="https://i.imgur.com/eXjpF7E.png" alt="Task 5 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-6': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 6', 
-        description: '<img src="https://i.imgur.com/1HaOjIc.png" alt="Task 6 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-7': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 7', 
-        description: '<img src="https://i.imgur.com/1HaOjIc.png" alt="Task 7 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-8': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 8', 
-        description: '<img src="https://i.imgur.com/E0oeXwo.png" alt="Task 8 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-9': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 9', 
-        description: '<img src="https://i.imgur.com/hw5ntJK.png" alt="Task 9 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-10': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 10', 
-        description: '<img src="https://i.imgur.com/4qzp51A.png" alt="Task 10 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-11': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 11', 
-        description: '<img src="https://i.imgur.com/Fe1naAv.png" alt="Task 11 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-12': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 12', 
-        description: '<img src="https://i.imgur.com/URj9ZBJ.png" alt="Task 12 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-13': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 13', 
-        description: '<img src="https://i.imgur.com/IqmYtJx.png" alt="Task 13 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-14': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 14', 
-        description: '<img src="https://i.imgur.com/tKBlJVl.png" alt="Task 14 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-15': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 15', 
-        description: '<img src="https://i.imgur.com/4ldxG53.png" alt="Task 15 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-16': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 16', 
-        description: '<img src="https://i.imgur.com/QCx9ZCA.png" alt="Task 16 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-17': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 17', 
-        description: '<img src="https://i.imgur.com/eeZ6GeC.png" alt="Task 17 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-18': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 18', 
-        description: '<img src="https://i.imgur.com/PSxOTGr.png" alt="Task 18 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-19': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 19', 
-        description: '<img src="https://i.imgur.com/v824YiK.png" alt="Task 19 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-20': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 20', 
-        description: '<img src="https://i.imgur.com/bF23JHQ.png" alt="Task 20 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-21': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 21', 
-        description: '<img src="https://i.imgur.com/b8JNpii.png" alt="Task 21 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-22': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 22', 
-        description: '<img src="https://i.imgur.com/vc0ezGJ.png" alt="Task 22 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-23': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 23', 
-        description: '<img src="https://i.imgur.com/owpLvw9.png" alt="Task 23 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-24': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 24', 
-        description: '<img src="https://i.imgur.com/Bv4rkyN.png" alt="Task 24 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-25': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 25', 
-        description: '<img src="https://i.imgur.com/kNFkxGO.png" alt="Task 25 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-26': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 26', 
-        description: '<img src="https://i.imgur.com/9E44MTf.png" alt="Task 26 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-27': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 27', 
-        description: '<img src="https://i.imgur.com/3S9lrw2.png" alt="Task 27 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-28': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 28', 
-        description: '<img src="https://i.imgur.com/dgCAWGM.png" alt="Task 28 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-29': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 29', 
-        description: '<img src="https://i.imgur.com/ivkT24z.png" alt="Task 29 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    },
-    'rfo2025-1011-30': { 
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 30', 
-        description: '<img src="https://i.imgur.com/IGREOaS.png" alt="Task 30 Description" class="task-image">', 
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' 
-    }
-};
-
-        const task = tasks[taskId];
-        const taskDetails = document.getElementById('task-details');
-       if (task) {
-    taskDetails.innerHTML = `
-        <h1>${task.title}</h1>
-        <p>${task.description}</p>
-        ${task.image ? `<img src="${task.image}" alt="Task Image" class="task-image">` : ''}
-        <div class="options">
-            ${task.options ? task.options.map(option => `<p>${option}</p>`).join('') : ''}
+    <div class="tasks-section">
+        <h1>Задачи</h1>
+        <div class="filter-bar">
+            <select id="competition-filter">
+                <option value="">Любое соревнование</option>
+                <option value="RFO">Республиканская предметная олимпиада</option>
+                <option value="RGM">Республиканский предметный конкурс</option>
+            </select>
+            <select id="year-filter">
+                <option value="">Любой год</option>
+                <option value="2024/2025">2024/2025</option>
+            </select>
+<select id="round-filter">
+    <option value="">Любой тур</option>
+    <option value="Районный (городской) этап">Районный (городской) этап</option>
+    <option value="Полуфинальный этап">Полуфинальный этап</option>
+</select>
+<select id="grade-filter">
+                <option value="">Любой класс</option>
+                <option value="младшая возрастная группа">Младшая возрастная группа (8-9 классы)</option>
+                <option value="старшая возрастная группа">Старшая возрастная группа (10-11 классы)</option>
+                <option value="7-е классы">7-е классы</option>
+                <option value="8-е классы">8-е классы</option>
+                <option value="9-е классы">9-е классы</option>
+                <option value="10-е классы">10-е классы</option>
+		<option value="11-е классы">11-е классы</option>
+            </select>
+            <input type="text" id="task-filter" placeholder="Введите номер задачи" />
         </div>
-        ${taskId.startsWith('rpc2025-7-') ? '' : `<p class="source"><strong>Источник:</strong> <a href="${task.source}" target="_blank">${task.source}</a></p>`}
-        <button class="back-button" onclick="window.location.href='tasks.html'">Назад к списку задач</button>
-    `;
-} else {
-            taskDetails.innerHTML = `
-                <h1>Задача не найдена</h1>
-                <p>К сожалению, задача с указанным идентификатором не найдена.</p>
-                <button class="back-button" onclick="window.location.href='tasks.html'">Вернуться к задачам</button>
-            `;
-        }
-    </script>
-</body>
-</html>
+        <div class="tasks-list" id="tasks-list">
+            <!-- Task cards will be populated by JavaScript -->
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+const tasks = [
+     { id: 'rfo2025-8-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '1' },
+    { id: 'rpc2025-7-1', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 1', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '1' },
+    { id: 'rpc2025-7-2', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 2', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '2' },
+    { id: 'rpc2025-7-3', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 3', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '3' },
+    { id: 'rpc2025-7-4', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 4', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '4' },
+    { id: 'rpc2025-7-7', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 7', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '7' },
+    { id: 'rpc2025-7-11', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 11', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '11' },
+    { id: 'rpc2025-7-17', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 17', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '17' },
+    { id: 'rpc2025-7-18', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 18', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '18' },
+    { id: 'rpc2025-7-20', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 20', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '20' },
+    { id: 'rpc2025-7-21', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 21', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '21' },
+    { id: 'rpc2025-7-22', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 22', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '22' },
+    { id: 'rpc2025-7-25', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 25', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '25' },
+    { id: 'rfo2025-8-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '2' },
+    { id: 'rfo2025-8-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '3' },
+    { id: 'rfo2025-8-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '4' },
+    { id: 'rfo2025-8-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '5' },
+    { id: 'rfo2025-8-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '6' },
+    { id: 'rfo2025-8-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '7' },
+    { id: 'rfo2025-8-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '10' },
+    { id: 'rfo2025-8-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '12' },
+    { id: 'rfo2025-8-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '19' },
+    { id: 'rfo2025-8-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '20' },
+    { id: 'rfo2025-8-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '21' },
+    { id: 'rfo2025-8-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '24' },
+    { id: 'rfo2025-8-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '25' },
+    { id: 'rfo2025-9-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '1' },
+    { id: 'rfo2025-9-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '2' },
+    { id: 'rfo2025-9-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '5' },
+    { id: 'rfo2025-9-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '6' },
+    { id: 'rfo2025-9-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '7' },
+    { id: 'rfo2025-9-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '14' },
+    { id: 'rfo2025-9-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '16' },
+    { id: 'rfo2025-9-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '17' },
+    { id: 'rfo2025-9-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '18' },
+    { id: 'rfo2025-9-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '21' },
+    { id: 'rfo2025-10-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '2' },
+    { id: 'rfo2025-10-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '5' },
+    { id: 'rfo2025-10-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '6' },
+    { id: 'rfo2025-10-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '7' },
+{ id: 'rfo2025-10-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '1' },
+    { id: 'rfo2025-10-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '3' },
+    { id: 'rfo2025-10-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '4' },
+    { id: 'rfo2025-10-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '9' },
+    { id: 'rfo2025-10-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '11' },
+    { id: 'rfo2025-10-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '12' },
+    { id: 'rfo2025-10-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '13' },
+    { id: 'rfo2025-10-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '14' },
+    { id: 'rfo2025-10-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '16' },
+    { id: 'rfo2025-10-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '17' },
+    { id: 'rfo2025-10-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '19' },
+    { id: 'rfo2025-10-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '20' },
+    { id: 'rfo2025-10-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '21' },
+    { id: 'rfo2025-10-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '22' },
+    { id: 'rfo2025-10-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '23' },
+    { id: 'rfo2025-10-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '24' },
+    { id: 'rfo2025-11-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '1' },
+    { id: 'rfo2025-11-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '2' },
+    { id: 'rfo2025-11-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '3' },
+    { id: 'rfo2025-11-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '4' },
+    { id: 'rfo2025-11-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '5' },
+    { id: 'rfo2025-11-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '6' },
+    { id: 'rfo2025-11-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '7' },
+    { id: 'rfo2025-11-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '8' },
+    { id: 'rfo2025-11-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '9' },
+    { id: 'rfo2025-11-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '10' },
+    { id: 'rfo2025-11-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '11' },
+    { id: 'rfo2025-11-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '12' },
+    { id: 'rfo2025-11-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '13' },
+    { id: 'rfo2025-11-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '14' },
+    { id: 'rfo2025-11-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '15' },
+    { id: 'rfo2025-11-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '16' },
+    { id: 'rfo2025-11-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '17' },
+    { id: 'rfo2025-11-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '18' },
+    { id: 'rfo2025-11-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '19' },
+    { id: 'rfo2025-11-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '20' },
+    { id: 'rfo2025-11-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '21' },
+    { id: 'rfo2025-11-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '22' },
+{ id: 'rfo2025-11-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '1' }, { id: 'rfo2025-11-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '2' }, { id: 'rfo2025-11-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '3' }, { id: 'rfo2025-11-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '4' }, { id: 'rfo2025-11-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '5' }, { id: 'rfo2025-11-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '6' }, { id: 'rfo2025-11-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '7' }, { id: 'rfo2025-11-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '8' }, { id: 'rfo2025-11-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '9' }, { id: 'rfo2025-11-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '10' }, { id: 'rfo2025-11-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '11' }, { id: 'rfo2025-11-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '12' }, { id: 'rfo2025-11-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '13' }, { id: 'rfo2025-11-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '14' }, { id: 'rfo2025-11-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '15' }, { id: 'rfo2025-11-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '16' }, { id: 'rfo2025-11-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '17' }, { id: 'rfo2025-11-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '18' }, { id: 'rfo2025-11-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '19' }, { id: 'rfo2025-11-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '20' }, { id: 'rfo2025-11-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '21' }, { id: 'rfo2025-11-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '22' }, { id: 'rfo2025-11-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '23' }, { id: 'rfo2025-11-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '24' }, { id: 'rfo2025-11-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '25' },
+    { id: 'rfo2025-11-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '23' },
+    { id: 'rfo2025-11-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '24' },
+    { id: 'rfo2025-11-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '25' },
+{ id: 'rfo2025-11-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '1' }, { id: 'rfo2025-11-2', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '2' }, { id: 'rfo2025-11-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '3' }, { id: 'rfo2025-11-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '4' }, { id: 'rfo2025-11-5', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '5' }, { id: 'rfo2025-11-6', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '6' }, { id: 'rfo2025-11-7', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '7' }, { id: 'rfo2025-11-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '8' }, { id: 'rfo2025-11-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '9' }, { id: 'rfo2025-11-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '10' }, { id: 'rfo2025-11-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '11' }, { id: 'rfo2025-11-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '12' }, { id: 'rfo2025-11-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '13' }, { id: 'rfo2025-11-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '14' }, { id: 'rfo2025-11-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '15' }, { id: 'rfo2025-11-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '16' }, { id: 'rfo2025-11-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '17' }, { id: 'rfo2025-11-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '18' }, { id: 'rfo2025-11-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '19' }, { id: 'rfo2025-11-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '20' }, { id: 'rfo2025-11-21', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '21' }, { id: 'rfo2025-11-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '22' }, { id: 'rfo2025-11-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '23' }, { id: 'rfo2025-11-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '24' }, { id: 'rfo2025-11-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '11-е классы', taskNumber: '25' },
+{ id: 'rfo2025-8-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '8' }, { id: 'rfo2025-8-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '9' }, { id: 'rfo2025-8-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '11' }, { id: 'rfo2025-8-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '13' }, { id: 'rfo2025-8-14', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '14' }, { id: 'rfo2025-8-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '15' }, { id: 'rfo2025-8-16', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '16' }, { id: 'rfo2025-8-17', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '17' }, { id: 'rfo2025-8-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '18' }, { id: 'rfo2025-8-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '22' }, { id: 'rfo2025-8-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '23' }, { id: 'rfo2025-9-3', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '3' }, { id: 'rfo2025-9-4', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '4' }, { id: 'rfo2025-9-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '8' }, { id: 'rfo2025-9-9', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '9' }, { id: 'rfo2025-9-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '10' }, { id: 'rfo2025-9-11', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '11' }, { id: 'rfo2025-9-12', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '12' }, { id: 'rfo2025-9-13', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '13' }, { id: 'rfo2025-9-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '15' }, { id: 'rfo2025-9-19', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '19' }, { id: 'rfo2025-9-20', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '20' }, { id: 'rfo2025-9-22', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '22' }, { id: 'rfo2025-9-23', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '23' }, { id: 'rfo2025-9-24', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '24' }, { id: 'rfo2025-9-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '9-е классы', taskNumber: '25' },
+    { id: 'rfo2025-10-8', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '8' },
+    { id: 'rfo2025-10-10', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '10' },
+    { id: 'rfo2025-10-15', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '15' },
+    { id: 'rfo2025-10-18', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '18' },
+    { id: 'rfo2025-10-25', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '10-е классы', taskNumber: '25' },
+{ id: 'rfo2025-89-1', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '1', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-2', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '2', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-3', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '3', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-4', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '4', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-5', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '5', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-6', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '6', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-7', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '7', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-8', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '8', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-9', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '9', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-10', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '10', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-11', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '11', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-12', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '12', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-13', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '13', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-14', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '14', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-15', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '15', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-16', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '16', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-17', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '17', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-18', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '18', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-19', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '19', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-20', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '20', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-21', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '21', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-22', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '22', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-23', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '23', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-24', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '24', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-25', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '25', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-26', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 26', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '26', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-27', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 27', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '27', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-28', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 28', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '28', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-29', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 29', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '29', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-89-30', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы - Задача 30', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'младшая возрастная группа', taskNumber: '30', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf' },
+{ id: 'rfo2025-1011-1', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '1', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-2', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 2', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '2', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-3', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 3', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '3', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-4', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 4', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '4', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-5', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 5', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '5', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-6', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 6', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '6', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-7', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 7', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '7', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-8', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 8', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '8', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-9', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 9', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '9', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-10', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 10', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '10', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-11', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 11', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '11', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-12', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 12', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '12', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-13', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 13', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '13', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-14', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 14', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '14', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-15', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 15', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '15', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-16', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 16', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '16', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-17', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 17', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '17', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-18', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 18', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '18', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-19', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 19', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '19', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-20', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 20', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '20', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-21', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 21', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '21', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-22', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 22', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '22', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-23', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 23', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '23', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-24', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 24', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '24', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-25', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 25', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '25', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-26', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 26', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '26', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-27', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 27', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '27', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-28', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 28', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '28', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-29', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 29', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '29', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
+    { id: 'rfo2025-1011-30', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 30', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '30', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' }
+
+];
+const competitions = [
+    {
+        id: 'rpc2025-7',
+        title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы',
+        stage: 'Районный (городской) этап',
+        grades: ['7-е классы'],
+        taskCount: 10,
+        source: 'https://arti.edu.az'
+    },
+    {
+        id: 'rfo2025-8',
+        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы',
+        stage: 'Районный (городской) этап',
+        grades: ['8-е классы'],
+        taskCount: 25,
+        source: 'https://arti.edu.az'
+    },
+    {
+        id: 'rfo2025-9',
+        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы',
+        stage: 'Районный (городской) этап',
+        grades: ['9-е классы'],
+        taskCount: 25,
+        source: 'https://arti.edu.az'
+    },
+    {
+        id: 'rfo2025-10',
+        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы',
+        stage: 'Районный (городской) этап',
+        grades: ['10-е классы'],
+        taskCount: 25,
+        source: 'https://arti.edu.az'
+    },
+    {
+        id: 'rfo2025-11',
+        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы',
+        stage: 'Районный (городской) этап',
+        grades: ['11-е классы'],
+        taskCount: 25,
+        source: 'https://arti.edu.az'
+    },
+    {
+        id: 'rfo2025-89',
+        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы',
+        stage: 'Полуфинальный этап',
+        grades: ['младшая возрастная группа'],
+        taskCount: 30,
+        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf'
+    },
+    {
+        id: 'rfo2025-1011',
+        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы',
+        stage: 'Полуфинальный этап',
+        grades: ['старшая возрастная группа'],
+        taskCount: 30,
+        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf'
+    }
+];
+
+function renderTasks(filteredTasks) {
+    const tasksList = document.getElementById('tasks-list');
+    tasksList.innerHTML = '';
+    if (filteredTasks.length === 0) {
+        tasksList.innerHTML = '<p class="no-tasks">Задача не найдена. Пожалуйста, проверьте номер задачи.</p>';
+        return;
+    }
+    filteredTasks.forEach(task => {
+        const taskCard = document.createElement('div');
+        taskCard.className = 'task-card';
+        taskCard.innerHTML = `
+            <h3>${task.title}</h3>
+            <a href="task-details2.html?id=${task.id}" target="_blank">Посмотреть на задачу</a>
+        `;
+        tasksList.appendChild(taskCard);
+    });
+}
+
+function filterTasks() {
+    const competition = document.getElementById('competition-filter').value;
+    const year = document.getElementById('year-filter').value;
+    const round = document.getElementById('round-filter').value;
+    const grade = document.getElementById('grade-filter').value;
+    const taskNumber = document.getElementById('task-filter').value.trim();
+
+    const filteredTasks = tasks.filter(task => {
+        const matchesCompetition = !competition || task.competition === competition;
+        const matchesYear = !year || task.year === year;
+        const matchesRound = !round || task.round === round;
+        const matchesGrade = !grade || 
+            (grade === 'младшая возрастная группа' && (task.grade === '8-е классы' || task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
+            (grade === 'старшая возрастная группа' && (task.grade === '10-е классы' || task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
+            (grade === '8-е классы' && (task.grade === '8-е классы' || task.grade === 'младшая возрастная группа')) ||
+            (grade === '9-е классы' && (task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
+            (grade === '10-е классы' && (task.grade === '10-е классы' || task.grade === 'старшая возрастная группа')) ||
+            (grade === '11-е классы' && (task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
+            task.grade === grade;
+        const matchesTaskNumber = !taskNumber || task.taskNumber === taskNumber;
+        return matchesCompetition && matchesYear && matchesRound && matchesGrade && matchesTaskNumber;
+    });
+
+    renderTasks(filteredTasks);
+}
+// Initial render
+renderTasks(tasks);
+
+// Add event listeners to filters
+document.getElementById('competition-filter').addEventListener('change', filterTasks);
+document.getElementById('year-filter').addEventListener('change', filterTasks);
+document.getElementById('round-filter').addEventListener('change', filterTasks);
+document.getElementById('grade-filter').addEventListener('change', filterTasks);
+document.getElementById('task-filter').addEventListener('input', filterTasks);
+
+// Highlight active navigation link
+const navLinks = document.querySelectorAll('.nav-link');
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('#')[0];
+    link.classList.remove('active');
+    if (href === currentPath) {
+        link.classList.add('active');
+    }
+});
+</script>
+   
+
 
 
 

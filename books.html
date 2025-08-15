@@ -268,8 +268,11 @@
     <script>
         // Function to trigger file download
         function downloadFile(url, fileName) {
-            fetch(url)
-                .then(response => response.blob())
+            fetch(url, { method: 'GET', mode: 'cors' })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.blob();
+                })
                 .then(blob => {
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);

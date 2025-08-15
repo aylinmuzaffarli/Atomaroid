@@ -17,31 +17,36 @@
             color: #202124;
             line-height: 1.6;
         }
-       .header {
-    background: #ffffff;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    border-radius: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.header .logo {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #1a73e8;
-}
-.header nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: #202124;
-    font-weight: 600;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
         .header nav a:hover {
             color: #1a73e8;
             border-bottom: 2px solid #1a73e8;
@@ -175,48 +180,58 @@
             to { opacity: 1; }
         }
         @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
-        margin: 10px;
-    }
-    .header .logo {
-        font-size: 1.8em;
-    }
-    .header nav {
-        margin-top: 10px;
-        display: flex;
-        justify-content: center; /* Ensure centering */
-        flex-wrap: wrap; /* Allow links to wrap if needed */
-    }
-    .header nav a {
-        margin: 5px 15px; /* Match index.html */
-    }
-    .dropdown-content {
-        min-width: 150px;
-    }
-    /* Existing filter-bar and task-card styles */
-
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
+            }
+            .header nav {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .header nav a {
+                margin: 5px 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-bar select, .filter-bar input {
+                width: 80%;
+                max-width: 300px;
+            }
+            .task-card {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
         @media (max-width: 480px) {
             .header {
                 margin: 5px;
                 padding: 10px;
             }
             .header .logo {
-                font-size: 1.7em;
+                font-size: 1.6em;
             }
             .header nav a {
-                margin-left: 10px;
-                margin-right: 10px;
-                font-size: 1em;
+                margin: 5px 10px;
+                font-size: 0.9em;
             }
             .dropdown-content {
-                min-width: 130px;
+                min-width: 120px;
             }
             .dropdown-content a {
-                padding: 12px 14px;
-                font-size: 1em;
+                padding: 10px 12px;
+                font-size: 0.9em;
             }
             .tasks-section {
                 margin: 5px;
@@ -308,7 +323,7 @@
     </footer>
     <script>
         const tasks = [
-            { id: 'rfo2025-8-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '1' },
+             { id: 'rfo2025-8-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '1' },
     { id: 'rpc2025-7-1', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 1', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '1' },
     { id: 'rpc2025-7-2', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 2', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '2' },
     { id: 'rpc2025-7-3', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 3', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '3' },
@@ -456,8 +471,64 @@
     { id: 'rfo2025-1011-27', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 27', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '27', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
     { id: 'rfo2025-1011-28', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 28', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '28', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
     { id: 'rfo2025-1011-29', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 29', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '29', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
-    { id: 'rfo2025-1011-30', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 30', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '30', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' }
-
+    { id: 'rfo2025-1011-30', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 30', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '30', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' }        ];
+        const competitions = [
+            {
+                id: 'rpc2025-7',
+                title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['7-е классы'],
+                taskCount: 10,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-8',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['8-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-9',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['9-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-10',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['10-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-11',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['11-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-89',
+                title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы',
+                stage: 'Полуфинальный этап',
+                grades: ['младшая возрастная группа'],
+                taskCount: 30,
+                source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf'
+            },
+            {
+                id: 'rfo2025-1011',
+                title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы',
+                stage: 'Полуфинальный этап',
+                grades: ['старшая возрастная группа'],
+                taskCount: 30,
+                source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf'
+            }
         ];
 
         function renderTasks(filteredTasks) {

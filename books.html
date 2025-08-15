@@ -246,7 +246,7 @@
             <div class="book-details">
                 <img src="https://i.imgur.com/eSiIHAB.png" alt="Физика. 7 класс. Учебник: Александр Перышкин">
                 <p>Физика. 7 класс. Учебник: Александр Перышкин</p>
-                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-7.pdf" class="download-button" download>Скачать</a>
+                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-7.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-7.pdf'); return false;">Скачать</a>
             </div>
         </div>
         <div class="book-card">
@@ -258,7 +258,7 @@
             <div class="book-details">
                 <img src="https://i.imgur.com/jABRHiG.png" alt="Физика. 8 класс. Учебник. ФГОС: Александр Перышкин">
                 <p>Физика. 8 класс. Учебник. ФГОС: Александр Перышкин</p>
-                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-8.pdf" class="download-button" download>Скачать</a>
+                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-8.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-8.pdf'); return false;">Скачать</a>
             </div>
         </div>
     </div>
@@ -266,6 +266,26 @@
         © 2025 Олимпиадная Платформа. Все права защищены.
     </footer>
     <script>
+        // Function to trigger file download
+        function downloadFile(url, fileName) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(link.href);
+                })
+                .catch(error => {
+                    console.error('Download failed:', error);
+                    // Fallback to opening the URL if download fails
+                    window.open(url, '_blank');
+                });
+        }
+
         // Highlight active navigation link based on page and section
         const navLinks = document.querySelectorAll('.nav-link');
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';

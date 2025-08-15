@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Внешние ссылки на задачи</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
+        }
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            margin-left: 0;
+            transition: color 0.3s ease, background 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            color: #1a73e8;
+            background: #e8f0fe;
+            border-bottom: none;
+        }
+        .links-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .links-section h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .links-card {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .links-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fbbc05;
+        }
+        .links-card h3 {
+            font-size: 1.7em;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #202124;
+        }
+        .links-card a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+        .links-card a:hover {
+            color: #ea4335;
+        }
+        .links-card p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .links-section h2 {
+                font-size: 1.8em;
+            }
+            .links-card {
+                width: 100%;
+                max-width: 400px;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle active">Материалы</a>
+                <div class="dropdown-content">
+                    <a href="books.html">Книги и PDF</a>
+                    <a href="external-links.html" class="active">Внешние ссылки на задачи</a>
+                    <a href="handbook.html">Olympiad Handbook</a>
+                </div>
+            </div>
+            <a href="articles.html" class="nav-link" target="_blank">Статьи</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+    <div class="links-section">
+        <h2>Внешние ссылки на задачи</h2>
+        <div class="links-card">
+            <h3>Республиканская предметная олимпиада</h3>
+            <p>Задачи и материалы Республиканской предметной олимпиады по физике.</p>
+            <a href="https://azfizik.blogspot.com/p/olimpiada-meseleleri.html" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>IPhO Problems and Solutions</h3>
+            <p>Международная олимпиада по физике (IPhO): задачи и решения.</p>
+            <a href="https://ipho.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>APhO Problems and Solutions</h3>
+            <p>Азиатская олимпиада по физике (APhO): задачи и решения.</p>
+            <a href="https://apho.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>EuPhO Problems and Solutions</h3>
+            <p>Европейская олимпиада по физике (EuPhO): задачи и решения.</p>
+            <a href="https://eupho.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>NBPhO/Est-Fin Problems and Solutions</h3>
+            <p>Северо-Балтийская олимпиада по физике (NBPhO) и эстонско-финские задачи.</p>
+            <a href="https://nbpho.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>RMPh Problems and Solutions</h3>
+            <p>Российская олимпиада по физике (RMPh): задачи и решения.</p>
+            <a href="https://rmph.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>WoPhO Problems and Solutions</h3>
+            <p>Всемирная олимпиада по физике (WoPhO): задачи и решения.</p>
+            <a href="https://wopho.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>Balkan Physics Olympiad (BPhO)</h3>
+            <p>Балканская олимпиада по физике: задачи и материалы.</p>
+            <a href="https://balkanphysicalunion.info/?p=864" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>Ibero-American Physics Olympiad (OIbF)</h3>
+            <p>Иберо-Американская олимпиада по физике: задачи и решения.</p>
+            <a href="https://oibf.olimpicos.net/" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>Online Physics Olympiad (OPhO)</h3>
+            <p>Онлайн-олимпиада по физике: архив задач и решений.</p>
+            <a href="https://opho.physoly.tech/archives" target="_blank">Перейти</a>
+        </div>
+        <div class="links-card">
+            <h3>Physics Olympiad Hub</h3>
+            <p>Центр олимпиад по физике с задачами и ресурсами.</p>
+            <a href="https://physoly.tech/" target="_blank">Перейти</a>
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
+
+            link.classList.remove('active');
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    link.classList.add('active');
+                }
+            }
+        });
+
+        // Set active class for dropdown item
+        const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+                document.querySelector('.dropdown-toggle').classList.add('active');
+            }
+        });
+
+        // Toggle dropdown on click
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -17,31 +17,31 @@
             color: #202124;
             line-height: 1.6;
         }
-        .header {
-            background: #ffffff;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            border-radius: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #1a73e8;
-        }
-        .header nav a {
-            margin-left: 30px;
-            text-decoration: none;
-            color: #202124;
-            font-weight: 600;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-        }
+       .header {
+    background: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1a73e8;
+}
+.header nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #202124;
+    font-weight: 600;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
         .header nav a:hover {
             color: #1a73e8;
             border-bottom: 2px solid #1a73e8;
@@ -175,39 +175,29 @@
             to { opacity: 1; }
         }
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 20px;
-                margin: 10px;
-            }
-            .header .logo {
-                font-size: 1.8em;
-            }
-            .header nav {
-                margin-top: 10px;
-            }
-            .header nav a {
-                margin-left: 15px;
-                margin-right: 15px;
-                font-size: 1.1em;
-            }
-            .dropdown-content {
-                min-width: 160px;
-            }
-            .filter-bar {
-                flex-direction: column;
-                align-items: center;
-            }
-            .filter-bar select, .filter-bar input {
-                width: 80%;
-                max-width: 300px;
-            }
-            .task-card {
-                width: 100%;
-                max-width: 360px;
-            }
-        }
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        margin: 10px;
+    }
+    .header .logo {
+        font-size: 1.8em;
+    }
+    .header nav {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center; /* Ensure centering */
+        flex-wrap: wrap; /* Allow links to wrap if needed */
+    }
+    .header nav a {
+        margin: 5px 15px; /* Match index.html */
+    }
+    .dropdown-content {
+        min-width: 150px;
+    }
+    /* Existing filter-bar and task-card styles */
+
         @media (max-width: 480px) {
             .header {
                 margin: 5px;

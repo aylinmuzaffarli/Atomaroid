@@ -139,6 +139,8 @@
             background: #202124;
             color: #ffffff;
             margin-top: 40px;
+            font-size: 1em;
+            font-weight: 400;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -148,6 +150,11 @@
             .header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
             }
             .header nav {
                 margin-top: 10px;
@@ -159,13 +166,49 @@
             .dropdown-content {
                 min-width: 150px;
             }
+            .articles-section {
+                margin: 10px;
+                padding: 15px;
+            }
             .articles-section h2 {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
             .articles-card {
-                width: 100%;
-                max-width: 400px;
-                margin: 15px auto;
+                width: 90%;
+                max-width: 350px;
+                margin: 10px auto;
+                padding: 20px;
+            }
+            footer {
+                padding: 25px;
+                font-size: 1em;
+                font-weight: 400;
+            }
+        }
+        @media (max-width: 480px) {
+            .articles-section {
+                margin: 5px;
+                padding: 10px;
+            }
+            .articles-section h2 {
+                font-size: 1.4em;
+            }
+            .articles-card {
+                width: 95%;
+                max-width: 300px;
+                margin: 10px auto;
+                padding: 15px;
+            }
+            .articles-card h3 {
+                font-size: 1.4em;
+            }
+            .articles-card p {
+                font-size: 0.9em;
+            }
+            footer {
+                padding: 25px;
+                font-size: 1em;
+                font-weight: 400;
             }
         }
     </style>

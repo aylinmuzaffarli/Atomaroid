@@ -173,6 +173,34 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             color: #ffffff;
         }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter-bar select, .filter-bar input {
+            padding: 10px;
+            font-size: 1.1em;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 200px;
+        }
+        .filter-bar select:focus, .filter-bar input:focus {
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+            border-color: #1a73e8;
+        }
+        .no-books {
+            text-align: center;
+            font-size: 1.2em;
+            color: #5f6368;
+            margin: 20px 0;
+            width: 100%;
+        }
         footer {
             text-align: center;
             padding: 25px;
@@ -213,6 +241,14 @@
             .book-card h3 img.small-cover {
                 width: 15px;
             }
+            .filter-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .filter-bar select, .filter-bar input {
+                width: 80%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -237,112 +273,131 @@
     </div>
     <div class="books-section">
         <h2>Книги и PDF</h2>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/eSiIHAB.png" alt="Физика. 7 класс. Учебник: Александр Перышкин" class="small-cover">
-                Физика. 7 класс. Учебник: Александр Перышкин
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/eSiIHAB.png" alt="Физика. 7 класс. Учебник: Александр Перышкин">
-                <p>Физика. 7 класс. Учебник: Александр Перышкин</p>
-                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-7.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-7.pdf'); return false;">Скачать</a>
-            </div>
+        <div class="filter-bar">
+            <select id="grade-filter">
+                <option value="">Любой класс</option>
+                <option value="7">7 класс</option>
+                <option value="8">8 класс</option>
+                <option value="9">9 класс</option>
+                <option value="10">10 класс</option>
+                <option value="11">11 класс</option>
+                <option value="Advanced">Продвинутый уровень</option>
+            </select>
+            <select id="language-filter">
+                <option value="">Любой язык</option>
+                <option value="Русский">Русский</option>
+                <option value="Английский">Английский</option>
+            </select>
+            <input type="text" id="title-filter" placeholder="Поиск по названию">
         </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/jABRHiG.png" alt="Физика. 8 класс. Учебник. ФГОС: Александр Перышкин" class="small-cover">
-                Физика. 8 класс. Учебник. ФГОС: Александр Перышкин
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/jABRHiG.png" alt="Физика. 8 класс. Учебник. ФГОС: Александр Перышкин">
-                <p>Физика. 8 класс. Учебник. ФГОС: Александр Перышкин</p>
-                <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-8.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-8.pdf'); return false;">Скачать</a>
+        <div class="books-list" id="books-list">
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/eSiIHAB.png" alt="Физика. 7 класс. Учебник: Александр Перышкин" class="small-cover">
+                    Физика. 7 класс. Учебник: Александр Перышкин
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/eSiIHAB.png" alt="Физика. 7 класс. Учебник: Александр Перышкин">
+                    <p>Физика. 7 класс. Учебник: Александр Перышкин</p>
+                    <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-7.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-7.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/uonoWI1_d.webp?maxwidth=760&fidelity=grand" alt="Физика. 9 класс. Кикоин И.К., Кикоин А.К." class="small-cover">
-                Физика. 9 класс. Кикоин И.К., Кикоин А.К.
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/uonoWI1_d.webp?maxwidth=760&fidelity=grand" alt="Физика. 9 класс. Кикоин И.К., Кикоин А.К.">
-                <p>Физика. 9 класс. Кикоин И.К., Кикоин А.К.</p>
-                <a href="https://63.edubish.kg/wp-content/uploads/sites/218/2023/02/9-klass-fizika-kikoin.pdf" class="download-button" onclick="downloadFile(this.href, 'Kikoin_Fizika-9.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/jABRHiG.png" alt="Физика. 8 класс. Учебник. ФГОС: Александр Перышкин" class="small-cover">
+                    Физика. 8 класс. Учебник. ФГОС: Александр Перышкин
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/jABRHiG.png" alt="Физика. 8 класс. Учебник. ФГОС: Александр Перышкин">
+                    <p>Физика. 8 класс. Учебник. ФГОС: Александр Перышкин</p>
+                    <a href="https://rl.odessa.ua/media/_For_Liceistu/Physics/Pyoryshkin_Fizika-8.pdf" class="download-button" onclick="downloadFile(this.href, 'Pyoryshkin_Fizika-8.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/Id7dVoV.jpeg" alt="Физика. 10 класс. Классический курс. Г. Мякишев" class="small-cover">
-                Физика. 10 класс. Классический курс. Г. Мякишев
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/Id7dVoV.jpeg" alt="Физика. 10 класс. Классический курс. Г. Мякишев">
-                <p>Физика. 10 класс. Классический курс. Г. Мякишев</p>
-                <a href="https://www.rl.odessa.ua/media/_For_Liceistu/Physics/Myakishev_Phys-10.pdf" class="download-button" onclick="downloadFile(this.href, 'Myakishev_Fizika-10.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/uonoWI1_d.webp?maxwidth=760&fidelity=grand" alt="Физика. 9 класс. Кикоин И.К., Кикоин А.К." class="small-cover">
+                    Физика. 9 класс. Кикоин И.К., Кикоин А.К.
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/uonoWI1_d.webp?maxwidth=760&fidelity=grand" alt="Физика. 9 класс. Кикоин И.К., Кикоин А.К.">
+                    <p>Физика. 9 класс. Кикоин И.К., Кикоин А.К.</p>
+                    <a href="https://63.edubish.kg/wp-content/uploads/sites/218/2023/02/9-klass-fizika-kikoin.pdf" class="download-button" onclick="downloadFile(this.href, 'Kikoin_Fizika-9.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/LGaOJ20.jpeg" alt="Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др." class="small-cover">
-                Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/LGaOJ20.jpeg" alt="Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.">
-                <p>Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.</p>
-                <a href="https://www.rl.odessa.ua/media/_For_Liceistu/Physics/Myakishev_Phys-11.pdf" class="download-button" onclick="downloadFile(this.href, 'Myakishev_Fizika-11.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/Id7dVoV.jpeg" alt="Физика. 10 класс. Классический курс. Г. Мякишев" class="small-cover">
+                    Физика. 10 класс. Классический курс. Г. Мякишев
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/Id7dVoV.jpeg" alt="Физика. 10 класс. Классический курс. Г. Мякишев">
+                    <p>Физика. 10 класс. Классический курс. Г. Мякишев</p>
+                    <a href="https://www.rl.odessa.ua/media/_For_Liceistu/Physics/Myakishev_Phys-10.pdf" class="download-button" onclick="downloadFile(this.href, 'Myakishev_Fizika-10.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/CBBdPdH.png" alt="Physics A General Course Volume 1 Mechanics, Molecular Physics" class="small-cover">
-                Physics A General Course Volume 1 Mechanics, Molecular Physics
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/CBBdPdH.png" alt="Physics A General Course Volume 1 Mechanics, Molecular Physics">
-                <p>Physics A General Course Volume 1 Mechanics, Molecular Physics</p>
-                <a href="https://dn790007.ca.archive.org/0/items/SavelyevPhysicsGeneralCourseVol1/I-V-Savelyev-Physics-General-Course-Vol-1.pdf" class="download-button" onclick="downloadFile(this.href, 'Savelyev_Physics_Vol1.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/LGaOJ20.jpeg" alt="Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др." class="small-cover">
+                    Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/LGaOJ20.jpeg" alt="Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.">
+                    <p>Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.</p>
+                    <a href="https://www.rl.odessa.ua/media/_For_Liceistu/Physics/Myakishev_Phys-11.pdf" class="download-button" onclick="downloadFile(this.href, 'Myakishev_Fizika-11.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/0pXZP8d.png" alt="Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles" class="small-cover">
-                Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/0pXZP8d.png" alt="Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles">
-                <p>Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles</p>
-                <a href="https://ia800302.us.archive.org/20/items/SavelyevPhysicsGeneralCourseVol3/I-V-Savelyev-Physics-General-Course-Vol-3.pdf" class="download-button" onclick="downloadFile(this.href, 'Savelyev_Physics_Vol3.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/CBBdPdH.png" alt="Physics A General Course Volume 1 Mechanics, Molecular Physics" class="small-cover">
+                    Physics A General Course Volume 1 Mechanics, Molecular Physics
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/CBBdPdH.png" alt="Physics A General Course Volume 1 Mechanics, Molecular Physics">
+                    <p>Physics A General Course Volume 1 Mechanics, Molecular Physics</p>
+                    <a href="https://dn790007.ca.archive.org/0/items/SavelyevPhysicsGeneralCourseVol1/I-V-Savelyev-Physics-General-Course-Vol-1.pdf" class="download-button" onclick="downloadFile(this.href, 'Savelyev_Physics_Vol1.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/EMcwU9E.jpeg" alt="PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES" class="small-cover">
-                PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/EMcwU9E.jpeg" alt="PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES">
-                <p>PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES</p>
-                <a href="https://irp-cdn.multiscreensite.com/721e955d/files/uploaded/Physics-Olympiad-Basic-To-Advanced-Exercises.pdf" class="download-button" onclick="downloadFile(this.href, 'Physics_Olympiad_Basic_To_Advanced.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/0pXZP8d.png" alt="Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles" class="small-cover">
+                    Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/0pXZP8d.png" alt="Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles">
+                    <p>Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles</p>
+                    <a href="https://ia800302.us.archive.org/20/items/SavelyevPhysicsGeneralCourseVol3/I-V-Savelyev-Physics-General-Course-Vol-3.pdf" class="download-button" onclick="downloadFile(this.href, 'Savelyev_Physics_Vol3.pdf'); return false;">Скачать</a>
+                </div>
             </div>
-        </div>
-        <div class="book-card">
-            <h3>
-                <span class="toggle-icon">▼</span>
-                <img src="https://i.imgur.com/6RTQXGf.jpeg" alt="Fundamentals of Physics 9th Extended" class="small-cover">
-                Fundamentals of Physics 9th Extended
-            </h3>
-            <div class="book-details">
-                <img src="https://i.imgur.com/6RTQXGf.jpeg" alt="Fundamentals of Physics 9th Extended">
-                <p>Fundamentals of Physics 9th Extended</p>
-                <a href="https://drive.uqu.edu.sa/_/mcloulou/files/Fundamentals%20of%20Physics%209th%20Extended.pdf" class="download-button" onclick="downloadFile(this.href, 'Fundamentals_of_Physics_9th_Extended.pdf'); return false;">Скачать</a>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/EMcwU9E.jpeg" alt="PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES" class="small-cover">
+                    PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/EMcwU9E.jpeg" alt="PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES">
+                    <p>PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES</p>
+                    <a href="https://irp-cdn.multiscreensite.com/721e955d/files/uploaded/Physics-Olympiad-Basic-To-Advanced-Exercises.pdf" class="download-button" onclick="downloadFile(this.href, 'Physics_Olympiad_Basic_To_Advanced.pdf'); return false;">Скачать</a>
+                </div>
+            </div>
+            <div class="book-card">
+                <h3>
+                    <span class="toggle-icon">▼</span>
+                    <img src="https://i.imgur.com/6RTQXGf.jpeg" alt="Fundamentals of Physics 9th Extended" class="small-cover">
+                    Fundamentals of Physics 9th Extended
+                </h3>
+                <div class="book-details">
+                    <img src="https://i.imgur.com/6RTQXGf.jpeg" alt="Fundamentals of Physics 9th Extended">
+                    <p>Fundamentals of Physics 9th Extended</p>
+                    <a href="https://drive.uqu.edu.sa/_/mcloulou/files/Fundamentals%20of%20Physics%209th%20Extended.pdf" class="download-button" onclick="downloadFile(this.href, 'Fundamentals_of_Physics_9th_Extended.pdf'); return false;">Скачать</a>
+                </div>
             </div>
         </div>
     </div>
@@ -350,6 +405,110 @@
         © 2025 Олимпиадная Платформа. Все права защищены.
     </footer>
     <script>
+        // Book data with grade and language attributes
+        const books = [
+            {
+                id: 'book1',
+                title: 'Физика. 7 класс. Учебник: Александр Перышкин',
+                grade: '7',
+                language: 'Русский',
+                element: document.querySelectorAll('.book-card')[0]
+            },
+            {
+                id: 'book2',
+                title: 'Физика. 8 класс. Учебник. ФГОС: Александр Перышкин',
+                grade: '8',
+                language: 'Русский',
+                element: document.querySelectorAll('.book-card')[1]
+            },
+            {
+                id: 'book3',
+                title: 'Физика. 9 класс. Кикоин И.К., Кикоин А.К.',
+                grade: '9',
+                language: 'Русский',
+                element: document.querySelectorAll('.book-card')[2]
+            },
+            {
+                id: 'book4',
+                title: 'Физика. 10 класс. Классический курс. Г. Мякишев',
+                grade: '10',
+                language: 'Русский',
+                element: document.querySelectorAll('.book-card')[3]
+            },
+            {
+                id: 'book5',
+                title: 'Физика. 11 класс. Мякишев Г.Я., Буховцев Б.Б. и др.',
+                grade: '11',
+                language: 'Русский',
+                element: document.querySelectorAll('.book-card')[4]
+            },
+            {
+                id: 'book6',
+                title: 'Physics A General Course Volume 1 Mechanics, Molecular Physics',
+                grade: 'Advanced',
+                language: 'Английский',
+                element: document.querySelectorAll('.book-card')[5]
+            },
+            {
+                id: 'book7',
+                title: 'Physics A General Course Volume 3 Quantum Optics, Atomic Physics, Solid State Physics, Physics of the Atomic Nucleus and Elementary Particles',
+                grade: 'Advanced',
+                language: 'Английский',
+                element: document.querySelectorAll('.book-card')[6]
+            },
+            {
+                id: 'book8',
+                title: 'PHYSICS OLYMPIAD - BASIC TO ADVANCED EXERCISES',
+                grade: 'Advanced',
+                language: 'Английский',
+                element: document.querySelectorAll('.book-card')[7]
+            },
+            {
+                id: 'book9',
+                title: 'Fundamentals of Physics 9th Extended',
+                grade: 'Advanced',
+                language: 'Английский',
+                element: document.querySelectorAll('.book-card')[8]
+            }
+        ];
+
+        // Function to render books based on filters
+        function renderBooks(filteredBooks) {
+            const booksList = document.getElementById('books-list');
+            booksList.innerHTML = '';
+            if (filteredBooks.length === 0) {
+                booksList.innerHTML = '<p class="no-books">Книга не найдена. Пожалуйста, проверьте параметры поиска.</p>';
+                return;
+            }
+            filteredBooks.forEach(book => {
+                booksList.appendChild(book.element);
+            });
+        }
+
+        // Function to filter books
+        function filterBooks() {
+            const grade = document.getElementById('grade-filter').value;
+            const language = document.getElementById('language-filter').value;
+            const title = document.getElementById('title-filter').value.trim().toLowerCase();
+
+            const filteredBooks = books.filter(book => {
+                const matchesGrade = !grade || book.grade === grade;
+                const matchesLanguage = !language || book.language === language;
+                const matchesTitle = !title || book.title.toLowerCase().includes(title);
+                return matchesGrade && matchesLanguage && matchesTitle;
+            });
+
+            renderBooks(filteredBooks);
+        }
+
+        // Add event listeners to filters
+        document.getElementById('grade-filter').addEventListener('change', filterBooks);
+        document.getElementById('language-filter').addEventListener('change', filterBooks);
+        document.getElementById('title-filter').addEventListener('input', filterBooks);
+
+        // Initial render
+        renderBooks(books);
+
         // Function to trigger file download
         function downloadFile(url, fileName) {
             fetch(url, { method: 'GET', mode: 'cors' })

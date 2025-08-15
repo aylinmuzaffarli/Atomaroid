@@ -146,6 +146,11 @@
             .header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
             }
             .header nav {
                 margin-top: 10px;
@@ -158,7 +163,47 @@
                 min-width: 150px;
             }
             .article-container h1 {
+                font-size: 1.8em Old: em;
+        }
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
                 font-size: 1.8em;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .header nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
+            }
+            .article-container {
+                margin: 5px;
+                padding: 10px;
+            }
+            .article-container h1 {
+                font-size: 1.4em;
+            }
+            .article-content {
+                width: 95%;
+                max-width: 300px;
+                margin: 10px auto;
+                padding: 15px;
+            }
+            .article-content p {
+                font-size: 0.9em;
+            }
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.9em;
             }
         }
     </style>

@@ -386,20 +386,24 @@
             const path = href.split('#')[0];
             const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
 
-            // Remove active class from all links
             link.classList.remove('active');
-
-            // Highlight based on page
             if (path === currentPath) {
                 if (currentPath === 'index.html' || currentPath === '') {
-                    // For index.html, highlight based on hash
                     if (hash === currentHash || (hash === '' && currentHash === '#home')) {
                         link.classList.add('active');
                     }
                 } else {
-                    // For other pages (e.g., info.html, tasks.html), highlight based on path
                     link.classList.add('active');
                 }
+            }
+        });
+
+        // Set active class for dropdown item
+        const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+                document.querySelector('.dropdown-toggle').classList.add('active');
             }
         });
 

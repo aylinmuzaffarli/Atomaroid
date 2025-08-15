@@ -50,6 +50,37 @@
             color: #1a73e8;
             border-bottom: 2px solid #1a73e8;
         }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            margin-left: 0;
+            transition: color 0.3s ease, background 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            color: #1a73e8;
+            background: #e8f0fe;
+            border-bottom: none;
+        }
         .tasks-section {
             max-width: 1200px;
             margin: 20px auto;
@@ -136,6 +167,8 @@
             background: #202124;
             color: #ffffff;
             margin-top: 40px;
+            font-size: 1em;
+            font-weight: 400;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -145,9 +178,21 @@
             .header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
             }
             .header nav {
                 margin-top: 10px;
+            }
+            .header nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
             }
             .filter-bar {
                 flex-direction: column;
@@ -160,6 +205,52 @@
             .task-card {
                 width: 100%;
                 max-width: 360px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                margin: 5px;
+                padding: 10px;
+            }
+            .header .logo {
+                font-size: 1.6em;
+            }
+            .header nav a {
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 0.9em;
+            }
+            .dropdown-content {
+                min-width: 120px;
+            }
+            .dropdown-content a {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+            .tasks-section {
+                margin: 5px;
+                padding: 10px;
+            }
+            .tasks-section h1 {
+                font-size: 2em;
+            }
+            .filter-bar select, .filter-bar input {
+                width: 90%;
+                max-width: 280px;
+                font-size: 0.9em;
+            }
+            .task-card {
+                width: 95%;
+                max-width: 300px;
+                padding: 15px;
+            }
+            .task-card h3 {
+                font-size: 1.4em;
+            }
+            footer {
+                padding: 25px;
+                font-size: 1em;
+                font-weight: 400;
             }
         }
         @media (min-width: 769px) {
@@ -176,7 +267,15 @@
             <a href="info.html" class="nav-link">О платформе</a>
             <a href="index.html#home" class="nav-link">Главная</a>
             <a href="tasks.html" class="nav-link">Задачи</a>
-            <a href="articles.html" class="nav-link">Статьи</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">Материалы</a>
+                <div class="dropdown-content">
+                    <a href="books.html">Книги и PDF</a>
+                    <a href="external-links.html">Внешние ссылки на задачи</a>
+                    <a href="handbook.html">Олимпиадный гайд</a>
+                </div>
+            </div>
+            <a href="articles.html" class="nav-link" target="_blank">Статьи</a>
             <a href="index.html#contact" class="nav-link">Контакты</a>
         </nav>
     </div>
@@ -192,12 +291,12 @@
                 <option value="">Любой год</option>
                 <option value="2024/2025">2024/2025</option>
             </select>
-<select id="round-filter">
-    <option value="">Любой тур</option>
-    <option value="Районный (городской) этап">Районный (городской) этап</option>
-    <option value="Полуфинальный этап">Полуфинальный этап</option>
-</select>
-<select id="grade-filter">
+            <select id="round-filter">
+                <option value="">Любой тур</option>
+                <option value="Районный (городской) этап">Районный (городской) этап</option>
+                <option value="Полуфинальный этап">Полуфинальный этап</option>
+            </select>
+            <select id="grade-filter">
                 <option value="">Любой класс</option>
                 <option value="младшая возрастная группа">Младшая возрастная группа (8-9 классы)</option>
                 <option value="старшая возрастная группа">Старшая возрастная группа (10-11 классы)</option>
@@ -205,7 +304,7 @@
                 <option value="8-е классы">8-е классы</option>
                 <option value="9-е классы">9-е классы</option>
                 <option value="10-е классы">10-е классы</option>
-		<option value="11-е классы">11-е классы</option>
+                <option value="11-е классы">11-е классы</option>
             </select>
             <input type="text" id="task-filter" placeholder="Введите номер задачи" />
         </div>
@@ -217,8 +316,8 @@
         © 2025 Олимпиадная Платформа. Все права защищены.
     </footer>
     <script>
-const tasks = [
-     { id: 'rfo2025-8-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '1' },
+        const tasks = [
+            { id: 'rfo2025-8-1', title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы - Задача 1', competition: 'RFO', year: '2024/2025', round: 'Районный (городской) этап', grade: '8-е классы', taskNumber: '1' },
     { id: 'rpc2025-7-1', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 1', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '1' },
     { id: 'rpc2025-7-2', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 2', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '2' },
     { id: 'rpc2025-7-3', title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы - Задача 3', competition: 'RPC', year: '2024/2025', round: 'Районный (городской) этап', grade: '7-е классы', taskNumber: '3' },
@@ -368,133 +467,165 @@ const tasks = [
     { id: 'rfo2025-1011-29', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 29', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '29', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' },
     { id: 'rfo2025-1011-30', title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы - Задача 30', competition: 'RFO', year: '2024/2025', round: 'Полуфинальный этап', grade: 'старшая возрастная группа', taskNumber: '30', source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf' }
 
-];
-const competitions = [
-    {
-        id: 'rpc2025-7',
-        title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы',
-        stage: 'Районный (городской) этап',
-        grades: ['7-е классы'],
-        taskCount: 10,
-        source: 'https://arti.edu.az'
-    },
-    {
-        id: 'rfo2025-8',
-        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы',
-        stage: 'Районный (городской) этап',
-        grades: ['8-е классы'],
-        taskCount: 25,
-        source: 'https://arti.edu.az'
-    },
-    {
-        id: 'rfo2025-9',
-        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы',
-        stage: 'Районный (городской) этап',
-        grades: ['9-е классы'],
-        taskCount: 25,
-        source: 'https://arti.edu.az'
-    },
-    {
-        id: 'rfo2025-10',
-        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы',
-        stage: 'Районный (городской) этап',
-        grades: ['10-е классы'],
-        taskCount: 25,
-        source: 'https://arti.edu.az'
-    },
-    {
-        id: 'rfo2025-11',
-        title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы',
-        stage: 'Районный (городской) этап',
-        grades: ['11-е классы'],
-        taskCount: 25,
-        source: 'https://arti.edu.az'
-    },
-    {
-        id: 'rfo2025-89',
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы',
-        stage: 'Полуфинальный этап',
-        grades: ['младшая возрастная группа'],
-        taskCount: 30,
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf'
-    },
-    {
-        id: 'rfo2025-1011',
-        title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы',
-        stage: 'Полуфинальный этап',
-        grades: ['старшая возрастная группа'],
-        taskCount: 30,
-        source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf'
-    }
-];
+        ];
+        const competitions = [
+            {
+                id: 'rpc2025-7',
+                title: 'Республиканский предметный конкурс 2024/2025, Районный (городской) этап, 7-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['7-е классы'],
+                taskCount: 10,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-8',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 8-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['8-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-9',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 9-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['9-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-10',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 10-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['10-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-11',
+                title: 'Республиканская предметная олимпиада 2024/2025, Районный (городской) этап, 11-е классы',
+                stage: 'Районный (городской) этап',
+                grades: ['11-е классы'],
+                taskCount: 25,
+                source: 'https://arti.edu.az'
+            },
+            {
+                id: 'rfo2025-89',
+                title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 8–9-е классы',
+                stage: 'Полуфинальный этап',
+                grades: ['младшая возрастная группа'],
+                taskCount: 30,
+                source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_AYQ_2025.pdf'
+            },
+            {
+                id: 'rfo2025-1011',
+                title: 'Республиканская предметная олимпиада 2024/2025, Полуфинальный этап, 10–11-е классы',
+                stage: 'Полуфинальный этап',
+                grades: ['старшая возрастная группа'],
+                taskCount: 30,
+                source: 'https://arti.edu.az/wp-content/uploads/2025/03/Fizika_Rus_YYQ_2025.pdf'
+            }
+        ];
 
-function renderTasks(filteredTasks) {
-    const tasksList = document.getElementById('tasks-list');
-    tasksList.innerHTML = '';
-    if (filteredTasks.length === 0) {
-        tasksList.innerHTML = '<p class="no-tasks">Задача не найдена. Пожалуйста, проверьте номер задачи.</p>';
-        return;
-    }
-    filteredTasks.forEach(task => {
-        const taskCard = document.createElement('div');
-        taskCard.className = 'task-card';
-        taskCard.innerHTML = `
-            <h3>${task.title}</h3>
-            <a href="task-details2.html?id=${task.id}" target="_blank">Посмотреть на задачу</a>
-        `;
-        tasksList.appendChild(taskCard);
-    });
-}
+        function renderTasks(filteredTasks) {
+            const tasksList = document.getElementById('tasks-list');
+            tasksList.innerHTML = '';
+            if (filteredTasks.length === 0) {
+                tasksList.innerHTML = '<p class="no-tasks">Задача не найдена. Пожалуйста, проверьте номер задачи.</p>';
+                return;
+            }
+            filteredTasks.forEach(task => {
+                const taskCard = document.createElement('div');
+                taskCard.className = 'task-card';
+                taskCard.innerHTML = `
+                    <h3>${task.title}</h3>
+                    <a href="task-details2.html?id=${task.id}" target="_blank">Посмотреть на задачу</a>
+                `;
+                tasksList.appendChild(taskCard);
+            });
+        }
 
-function filterTasks() {
-    const competition = document.getElementById('competition-filter').value;
-    const year = document.getElementById('year-filter').value;
-    const round = document.getElementById('round-filter').value;
-    const grade = document.getElementById('grade-filter').value;
-    const taskNumber = document.getElementById('task-filter').value.trim();
+        function filterTasks() {
+            const competition = document.getElementById('competition-filter').value;
+            const year = document.getElementById('year-filter').value;
+            const round = document.getElementById('round-filter').value;
+            const grade = document.getElementById('grade-filter').value;
+            const taskNumber = document.getElementById('task-filter').value.trim();
 
-    const filteredTasks = tasks.filter(task => {
-        const matchesCompetition = !competition || task.competition === competition;
-        const matchesYear = !year || task.year === year;
-        const matchesRound = !round || task.round === round;
-        const matchesGrade = !grade || 
-            (grade === 'младшая возрастная группа' && (task.grade === '8-е классы' || task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
-            (grade === 'старшая возрастная группа' && (task.grade === '10-е классы' || task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
-            (grade === '8-е классы' && (task.grade === '8-е классы' || task.grade === 'младшая возрастная группа')) ||
-            (grade === '9-е классы' && (task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
-            (grade === '10-е классы' && (task.grade === '10-е классы' || task.grade === 'старшая возрастная группа')) ||
-            (grade === '11-е классы' && (task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
-            task.grade === grade;
-        const matchesTaskNumber = !taskNumber || task.taskNumber === taskNumber;
-        return matchesCompetition && matchesYear && matchesRound && matchesGrade && matchesTaskNumber;
-    });
+            const filteredTasks = tasks.filter(task => {
+                const matchesCompetition = !competition || task.competition === competition;
+                const matchesYear = !year || task.year === year;
+                const matchesRound = !round || task.round === round;
+                const matchesGrade = !grade || 
+                    (grade === 'младшая возрастная группа' && (task.grade === '8-е классы' || task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
+                    (grade === 'старшая возрастная группа' && (task.grade === '10-е классы' || task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
+                    (grade === '8-е классы' && (task.grade === '8-е классы' || task.grade === 'младшая возрастная группа')) ||
+                    (grade === '9-е классы' && (task.grade === '9-е классы' || task.grade === 'младшая возрастная группа')) ||
+                    (grade === '10-е классы' && (task.grade === '10-е классы' || task.grade === 'старшая возрастная группа')) ||
+                    (grade === '11-е классы' && (task.grade === '11-е классы' || task.grade === 'старшая возрастная группа')) ||
+                    task.grade === grade;
+                const matchesTaskNumber = !taskNumber || task.taskNumber === taskNumber;
+                return matchesCompetition && matchesYear && matchesRound && matchesGrade && matchesTaskNumber;
+            });
 
-    renderTasks(filteredTasks);
-}
-// Initial render
-renderTasks(tasks);
+            renderTasks(filteredTasks);
+        }
 
-// Add event listeners to filters
-document.getElementById('competition-filter').addEventListener('change', filterTasks);
-document.getElementById('year-filter').addEventListener('change', filterTasks);
-document.getElementById('round-filter').addEventListener('change', filterTasks);
-document.getElementById('grade-filter').addEventListener('change', filterTasks);
-document.getElementById('task-filter').addEventListener('input', filterTasks);
+        // Initial render
+        renderTasks(tasks);
 
-// Highlight active navigation link
-const navLinks = document.querySelectorAll('.nav-link');
-const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-navLinks.forEach(link => {
-    const href = link.getAttribute('href').split('#')[0];
-    link.classList.remove('active');
-    if (href === currentPath) {
-        link.classList.add('active');
-    }
-});
-</script>
-   
+        // Add event listeners to filters
+        document.getElementById('competition-filter').addEventListener('change', filterTasks);
+        document.getElementById('year-filter').addEventListener('change', filterTasks);
+        document.getElementById('round-filter').addEventListener('change', filterTasks);
+        document.getElementById('grade-filter').addEventListener('change', filterTasks);
+        document.getElementById('task-filter').addEventListener('input', filterTasks);
 
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
 
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
 
+            link.classList.remove('active');
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    link.classList.add('active');
+                }
+            }
+        });
 
+        // Set active class for dropdown item
+        const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+                document.querySelector('.dropdown-toggle').classList.add('active');
+            }
+        });
 
+        // Toggle dropdown on click
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

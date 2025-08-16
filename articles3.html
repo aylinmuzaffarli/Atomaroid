@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерес — мой главный двигатель</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/gcLpNUp.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.6;
+        }
+        .header {
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .header nav a:hover {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .header nav a.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #202124;
+            font-weight: 600;
+            margin-left: 0;
+            transition: color 0.3s ease, background 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            color: #1a73e8;
+            background: #e8f0fe;
+            border-bottom: none;
+        }
+        .article-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .article-container h1 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .article-content {
+            background: #ffffff;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .article-content p {
+            color: #5f6368;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #1a73e8, #34a853);
+            color: #ffffff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #202124;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .header nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
+            }
+            .article-container h1 {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            .header .logo {
+                font-size: 1.8em;
+            }
+            .header nav {
+                margin-top: 10px;
+            }
+            .header nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .dropdown-content {
+                min-width: 150px;
+            }
+            .article-container {
+                margin: 5px;
+                padding: 10px;
+            }
+            .article-container h1 {
+                font-size: 1.4em;
+            }
+            .article-content {
+                width: 95%;
+                max-width: 300px;
+                margin: 10px auto;
+                padding: 15px;
+            }
+            .article-content p {
+                font-size: 0.9em;
+            }
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Atomaroid</div>
+        <nav>
+            <a href="info.html" class="nav-link">О платформе</a>
+            <a href="index.html#home" class="nav-link">Главная</a>
+            <a href="tasks.html" class="nav-link">Задачи</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">Материалы</a>
+                <div class="dropdown-content">
+                    <a href="books.html">Книги и PDF</a>
+                    <a href="external-links.html">Внешние ссылки на задачи</a>
+                    <a href="handbook.html">Олимпиадный гайд</a>
+                </div>
+            </div>
+            <a href="articles.html" class="nav-link active">Статьи</a>
+            <a href="index.html#contact" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+    <div class="article-container">
+        <h1>Интерес — мой главный двигатель</h1>
+        <div class="article-content">
+            <p>Раньше я думала, что вставать в 6 утра — это пытка. Пока не поняла, что интерес способен превратить это в удовольствие. Одним утром мне так хотелось проверить мини-проект по электронике, который я придумала ночью, что я вскочила с кровати раньше будильника.</p>
+            <p>Задачи по физике, математические головоломки и программирование превратились в настоящую игровую площадку.</p>
+            <p>Главное — поддерживать интерес. Я стараюсь связывать абстрактные задачи с реальными явлениями, проводить собственные эксперименты и искать нестандартные решения, которых нет в учебниках. Часы проходят незаметно, без усталости, движимая лишь любопытством. Тогда я поняла: интерес — это не просто мотивация, это суперсила для обучения.</p>
+            <a href="articles.html" class="back-button">Ко всем статьям</a>
+        </div>
+    </div>
+    <footer>
+        © 2025 Олимпиадная Платформа. Все права защищены.
+    </footer>
+    <script>
+        // Highlight active navigation link based on page and section
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentHash = window.location.hash || '#home';
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const path = href.split('#')[0];
+            const hash = href.includes('#') ? `#${href.split('#')[1]}` : '';
+
+            link.classList.remove('active');
+            if (path === currentPath) {
+                if (currentPath === 'index.html' || currentPath === '') {
+                    if (hash === currentHash || (hash === '' && currentHash === '#home')) {
+                        link.classList.add('active');
+                    }
+                } else {
+                    link.classList.add('active');
+                }
+            }
+        });
+
+        // Set active class for dropdown item
+        const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+                document.querySelector('.dropdown-toggle').classList.add('active');
+            }
+        });
+
+        // Toggle dropdown on click
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdown = document.querySelector('.dropdown');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
